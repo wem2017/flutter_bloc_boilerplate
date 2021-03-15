@@ -5,12 +5,14 @@ A boilerplate project created in flutter using Bloc. Boilerplate supports build 
 ## Getting Started
 
 The Boilerplate contains the minimal implementation required to create a new library or project.
-![alt text](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot1.png?raw=true =321x694)
-![alt text](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot2.png?raw=true =321x694)
-![alt text](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot3.png?raw=true =321x694)
-![alt text](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot4.png?raw=true =321x694)
-![alt text](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot5.png?raw=true =321x694)
-![alt text](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot6.png?raw=true =321x694)
+
+![](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot1.png =321x694)
+![](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot2.png =321x694)
+![](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot3.png =321x694)
+![](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot4.png =321x694)
+![](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot5.png =321x694)
+![](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/shot6.png =321x694)
+
 ## How to Use 
 
 **Step 1:**
