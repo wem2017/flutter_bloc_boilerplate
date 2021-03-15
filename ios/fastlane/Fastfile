@@ -1,0 +1,81 @@
+default_platform(:ios)
+
+DEVELOPER_APP_ID = ENV["DEVELOPER_APP_ID"]
+DEVELOPER_APP_IDENTIFIER = ENV["DEVELOPER_APP_IDENTIFIER"]
+DEVELOPER_EXTENSION_IDENTIFIER = ENV["DEVELOPER_EXTENSION_IDENTIFIER"]
+PROVISIONING_PROFILE_SPECIFIER = ENV["PROVISIONING_PROFILE_SPECIFIER"]
+PROVISIONING_PROFILE_EXTENSION_SPECIFIER = ENV["PROVISIONING_PROFILE_EXTENSION_SPECIFIER"]
+KEYCHAIN_NAME = ENV["KEYCHAIN_NAME"]
+KEYCHAIN_PASSWORD = ENV["KEYCHAIN_PASSWORD"]
+
+def delete_temp_keychain(name)
+  delete_keychain(
+    name: name
+  ) if File.exist? File.expand_path("~/Library/Keychains/#{name}-db")
+end
+
+def create_temp_keychain(name, password)
+  create_keychain(
+    name: name,
+    password: password,
+    unlock: false,
+    timeout: false
+  )
+end
+
+def ensure_temp_keychain(name, password)
+  delete_temp_keychain(name)
+  create_temp_keychain(name, password)
+end
+
+platform :ios do
+  lane :testflight do
+    keychain_name = KEYCHAIN_NAME
+    keychain_password = KEYCHAIN_PASSWORD
+    ensure_temp_keychain(keychain_name, keychain_password)
+
+    match(
+      type: 'appstore',
+      app_identifier: "#{DEVELOPER_APP_IDENTIFIER}",
+      git_basic_authorization: Base64.strict_encode64(ENV["GIT_AUTHORIZATION"]),
+      readonly: true,
+      keychain_name: keychain_name,
+      keychain_password: keychain_password 
+    )
+
+    match(
+      type: 'appstore',
+      app_identifier: "#{DEVELOPER_EXTENSION_IDENTIFIER}",
+      git_basic_authorization: Base64.strict_encode64(ENV["GIT_AUTHORIZATION"]),
+      readonly: true,
+      keychain_name: keychain_name,
+      keychain_password: keychain_password 
+    )
+
+    gym(
+      configuration: "Release",
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: { 
+            DEVELOPER_APP_IDENTIFIER => PROVISIONING_PROFILE_SPECIFIER,
+            DEVELOPER_EXTENSION_IDENTIFIER => PROVISIONING_PROFILE_EXTENSION_SPECIFIER
+        }
+      }
+    )
+
+    pilot(
+      apple_id: "#{DEVELOPER_APP_ID}",
+      app_identifier: "#{DEVELOPER_APP_IDENTIFIER}",
+      skip_waiting_for_build_processing: true,
+      skip_submission: true,
+      distribute_external: false,
+      notify_external_testers: false,
+      ipa: "./Runner.ipa"
+    )
+
+    delete_temp_keychain(keychain_name)
+
+  end
+end

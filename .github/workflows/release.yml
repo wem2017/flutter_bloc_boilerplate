@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "8.0.232"
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      - run: flutter clean
+      - run: flutter pub get
+      - run: flutter pub upgrade
+      #ios
+      - run: flutter build ios --release --no-codesign
+      - name: Deploy to TestFlight via Fastlane
+        uses: maierj/fastlane-action@v1.4.0
+        with:
+          lane: testflight
+          subdirectory: ios
+        env:
+          APP_STORE_CONNECT_TEAM_ID: "${{ secrets.APP_STORE_CONNECT_TEAM_ID }}"
+          DEVELOPER_APP_ID: "${{ secrets.DEVELOPER_APP_ID }}"
+          DEVELOPER_APP_IDENTIFIER: "${{ secrets.DEVELOPER_APP_IDENTIFIER }}"
+          DEVELOPER_PORTAL_TEAM_ID: "${{ secrets.DEVELOPER_PORTAL_TEAM_ID }}"
+          FASTLANE_APPLE_ID: "${{ secrets.FASTLANE_APPLE_ID }}"
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: "${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}"
+          MATCH_PASSWORD: "${{ secrets.KEYCHAIN_PASSWORD }}"
+          GIT_AUTHORIZATION: "${{ secrets.GIT_AUTHORIZATION }}"
+          PROVISIONING_PROFILE_SPECIFIER: "${{ secrets.PROVISIONING_PROFILE_SPECIFIER }}"
+          KEYCHAIN_NAME: "${{ secrets.KEYCHAIN_NAME }}"
+          KEYCHAIN_PASSWORD: "${{ secrets.KEYCHAIN_PASSWORD }}"
+          DEVELOPER_EXTENSION_IDENTIFIER: "${{ secrets.DEVELOPER_EXTENSION_IDENTIFIER }}"
+          PROVISIONING_PROFILE_EXTENSION_SPECIFIER: "${{ secrets.PROVISIONING_PROFILE_EXTENSION_SPECIFIER }}"
+      #android
+      - run: flutter build apk
+      - uses: actions/upload-artifact@v2
+        with:
+          name: release android
+          path: build/app/outputs/flutter-apk/app-release.apk
