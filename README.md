@@ -6,6 +6,8 @@ A boilerplate project created in flutter using Bloc. Boilerplate supports build 
 
 The Boilerplate contains the minimal implementation required to create a new library or project.
 
+![alt text](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/overview.png?raw=true)
+
 ## How to Use 
 
 **Step 1:**
@@ -13,7 +15,7 @@ The Boilerplate contains the minimal implementation required to create a new lib
 Download or clone this repo by using the link below:
 
 ```
-https://github.com/zubairehman/flutter_bloc_boilerplate.git
+https://github.com/wem2017/flutter_bloc_boilerplate.git
 ```
 
 **Step 2:**

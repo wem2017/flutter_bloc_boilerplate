@@ -24,9 +24,6 @@ dependencies:
   path_provider: ^2.0.1
   flutter_svprogresshud: ^0.0.6
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
 flutter:
   assets:
     - assets/images/
