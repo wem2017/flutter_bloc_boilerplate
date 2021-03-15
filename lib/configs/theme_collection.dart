@@ -102,7 +102,7 @@ class CollectionTheme {
       cardColor: colorScheme.surface,
       dividerColor: colorScheme.onSurface.withOpacity(0.12),
       backgroundColor: colorScheme.background,
-      dialogBackgroundColor: colorScheme.background,
+      dialogBackgroundColor: colorScheme.surface,
       errorColor: colorScheme.error,
       indicatorColor: indicatorColor,
       applyElevationOverlayColor: dark,

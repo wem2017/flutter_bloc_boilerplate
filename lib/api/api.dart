@@ -18,7 +18,7 @@ class Api {
       data: params,
     );
     result['success'] = true;
-    result['data'] = {};
+    result['data'] = {"username": ''};
     return ResultModel.fromJson(result);
   }
 
