@@ -12,15 +12,15 @@ dependencies:
   firebase_core: ^1.0.1
   firebase_analytics: ^7.1.1
   firebase_messaging: ^9.0.0
-  shared_preferences: ^2.0.4
+  shared_preferences: ^2.0.5
   intl: ^0.17.0
-  bloc: ^7.0.0-nullsafety.3
-  flutter_bloc: ^7.0.0-nullsafety.5
+  bloc: ^7.0.0
+  flutter_bloc: ^7.0.0
   webview_flutter: ^2.0.2
-  dio: ^4.0.0-beta7
+  dio: ^4.0.0-prev2
   shimmer: ^2.0.0-nullsafety.0
   rxdart: ^0.26.0
-  sqflite: ^2.0.0+2
+  sqflite: ^2.0.0+3
   path_provider: ^2.0.1
   flutter_svprogresshud: ^0.0.6
 

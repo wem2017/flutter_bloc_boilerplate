@@ -10,7 +10,7 @@ final List<String> rejectCode = [
 ];
 
 Map<String, dynamic> errorHandle({DioError error, bool base}) {
-  UtilLogger.log("ERROR", '${error.request.uri} $error');
+  UtilLogger.log("ERROR", error);
   String message = "unknown_error";
 
   Map<String, dynamic> data;
