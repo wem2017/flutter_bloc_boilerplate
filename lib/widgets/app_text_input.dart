@@ -19,26 +19,26 @@ class AppTextInput extends StatefulWidget {
     this.focusNode,
   });
 
-  final Key fieldKey;
-  final String hintText;
-  final String labelText;
-  final String helperText;
-  final TextInputType keyboardType;
-  final FormFieldValidator<String> validator;
-  final ValueChanged<String> onFieldSubmitted;
+  final Key? fieldKey;
+  final String? hintText;
+  final String? labelText;
+  final String? helperText;
+  final TextInputType? keyboardType;
+  final FormFieldValidator<String>? validator;
+  final ValueChanged<String>? onFieldSubmitted;
   final bool obscureText;
-  final TextEditingController controller;
-  final int maxLength;
-  final int maxLines;
-  final ValueChanged<String> onChanged;
-  final FocusNode focusNode;
+  final TextEditingController? controller;
+  final int? maxLength;
+  final int? maxLines;
+  final ValueChanged<String>? onChanged;
+  final FocusNode? focusNode;
 
   @override
   _AppTextInputState createState() => _AppTextInputState();
 }
 
 class _AppTextInputState extends State<AppTextInput> {
-  bool obscureText;
+  bool obscureText = false;
 
   @override
   void initState() {
@@ -46,23 +46,23 @@ class _AppTextInputState extends State<AppTextInput> {
     super.initState();
   }
 
-  String validateField(String text) {
+  String? validateField(String? text) {
     if (widget.keyboardType == TextInputType.phone) {
       return UtilValidator.validate(
-        text,
+        text!,
         type: ValidateType.phone,
       );
     }
     if (widget.keyboardType == TextInputType.emailAddress) {
       return UtilValidator.validate(
-        text,
+        text!,
         type: ValidateType.email,
       );
     }
     return null;
   }
 
-  Widget buildSuffixIcon() {
+  Widget? buildSuffixIcon() {
     if (widget.obscureText) {
       return GestureDetector(
         dragStartBehavior: DragStartBehavior.down,
@@ -76,11 +76,11 @@ class _AppTextInputState extends State<AppTextInput> {
         ),
       );
     }
-    if (widget.controller.text.isNotEmpty) {
+    if (widget.controller!.text.isNotEmpty) {
       return GestureDetector(
         dragStartBehavior: DragStartBehavior.down,
         onTap: () {
-          widget.controller.text = '';
+          widget.controller!.text = '';
         },
         child: Icon(Icons.clear),
       );
@@ -104,9 +104,7 @@ class _AppTextInputState extends State<AppTextInput> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         focusNode: widget.focusNode,
         onChanged: (text) {
-          if (widget.onChanged != null) {
-            widget?.onChanged(text);
-          }
+          widget.onChanged!(text);
           setState(() {});
         },
         decoration: InputDecoration(

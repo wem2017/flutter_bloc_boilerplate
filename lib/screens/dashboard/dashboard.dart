@@ -2,7 +2,7 @@ import 'package:envato/utils/translate.dart';
 import 'package:flutter/material.dart';
 
 class DashBoard extends StatefulWidget {
-  DashBoard({Key key}) : super(key: key);
+  DashBoard({Key? key}) : super(key: key);
 
   @override
   _DashBoardState createState() {
@@ -26,13 +26,13 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Translate.of(context).translate('dashboard'),
+          Translate.of(context)!.translate('dashboard'),
         ),
       ),
       body: Container(
         child: Center(
           child: Text(
-            Translate.of(context).translate('dashboard'),
+            Translate.of(context)!.translate('dashboard'),
           ),
         ),
       ),

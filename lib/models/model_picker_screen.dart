@@ -6,8 +6,8 @@ class PickerScreenModel {
   final List<PickerItemModel> list;
 
   PickerScreenModel({
-    this.title,
-    this.selected,
-    this.list,
+    required this.title,
+    required this.selected,
+    required this.list,
   });
 }

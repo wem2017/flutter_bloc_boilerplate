@@ -1,3 +1,4 @@
+import 'package:envato/models/model.dart';
 import 'package:envato/screens/screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,7 @@ class Routes {
         );
 
       case pickerScreen:
-        final picker = settings.arguments;
+        final picker = settings.arguments as PickerScreenModel;
         return MaterialPageRoute(
           builder: (context) {
             return PickerScreen(picker: picker);
@@ -72,12 +73,10 @@ class Routes {
         );
 
       case webView:
-        final web = settings.arguments;
+        final web = settings.arguments as WebViewModel;
         return MaterialPageRoute(
           builder: (context) {
-            return WebViewPage(
-              web: web,
-            );
+            return WebViewPage(web: web);
           },
           fullscreenDialog: true,
         );

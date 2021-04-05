@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class PickerScreen extends StatefulWidget {
   final PickerScreenModel picker;
-  PickerScreen({Key key, this.picker}) : super(key: key);
+  PickerScreen({Key? key, required this.picker}) : super(key: key);
 
   @override
   _PickerScreenState createState() {
@@ -13,6 +13,16 @@ class PickerScreen extends StatefulWidget {
 }
 
 class _PickerScreenState extends State<PickerScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   ///On change language
   Future<void> onChange(PickerItemModel item) async {
     Navigator.pop(context, item);
@@ -32,7 +42,7 @@ class _PickerScreenState extends State<PickerScreen> {
           padding: EdgeInsets.only(left: 16, top: 8),
           itemBuilder: (context, index) {
             final item = widget.picker.list[index];
-            Widget checked;
+            Widget? checked;
             if (item.value == widget.picker.selected.value) {
               checked = Icon(
                 Icons.check,

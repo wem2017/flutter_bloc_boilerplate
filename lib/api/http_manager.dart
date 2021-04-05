@@ -9,11 +9,11 @@ final List<String> rejectCode = [
   'invalid-token'
 ];
 
-Map<String, dynamic> errorHandle({DioError error, bool base}) {
+Map<String, dynamic> errorHandle({required DioError error}) {
   UtilLogger.log("ERROR", error);
   String message = "unknown_error";
 
-  Map<String, dynamic> data;
+  Map<String, dynamic>? data;
 
   switch (error.type) {
     case DioErrorType.sendTimeout:
@@ -21,9 +21,9 @@ Map<String, dynamic> errorHandle({DioError error, bool base}) {
       message = "request_time_out";
       break;
     case DioErrorType.response:
-      if (error.response.data is Map<String, dynamic>) {
-        data = error.response.data;
-        message = data['reason'] ?? data['message'] ?? message;
+      if (error.response!.data is Map<String, dynamic>) {
+        data = error.response!.data;
+        message = data!['reason'] ?? data['message'] ?? message;
       }
       break;
     default:
@@ -52,19 +52,21 @@ class HTTPManager {
   );
 
   BaseOptions exportOption() {
-    String token;
+    String? token;
     final Map<String, dynamic> header = {"uuid": ''};
-
     baseOptions.headers.addAll(header);
-    baseOptions.headers["Authorization"] = token;
+
+    if (token != null) {
+      baseOptions.headers["Authorization"] = token;
+    }
     return baseOptions;
   }
 
   ///Post method
   Future<dynamic> post({
-    String url,
-    Map<String, dynamic> data,
-    Options options,
+    required String url,
+    Map<String, dynamic>? data,
+    Options? options,
   }) async {
     UtilLogger.log("POST URL", url);
     UtilLogger.log("DATA", data);
@@ -83,9 +85,9 @@ class HTTPManager {
 
   ///Get method
   Future<dynamic> get({
-    String url,
-    Map<String, dynamic> params,
-    Options options,
+    required String url,
+    Map<String, dynamic>? params,
+    Options? options,
   }) async {
     UtilLogger.log("GET URL", url);
     UtilLogger.log("PARAMS", params);

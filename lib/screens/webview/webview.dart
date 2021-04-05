@@ -8,7 +8,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatefulWidget {
   final WebViewModel web;
-  WebViewPage({Key key, this.web}) : super(key: key);
+  WebViewPage({Key? key, required this.web}) : super(key: key);
 
   @override
   _WebViewPageState createState() {
@@ -22,21 +22,21 @@ class _WebViewPageState extends State<WebViewPage> {
   bool loaded = false;
   bool transitionCompleted = false;
   bool callbackSuccess = false;
-  String callbackUrl;
-  WebViewController controller;
+  String? callbackUrl;
+  WebViewController? controller;
 
   @override
   void initState() {
+    super.initState();
     SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light);
     SVProgressHUD.show();
     onTransitionCompleted();
-    super.initState();
   }
 
   @override
   void dispose() {
-    SVProgressHUD.dismiss();
     super.dispose();
+    SVProgressHUD.dismiss();
   }
 
   void onTransitionCompleted() async {
@@ -52,7 +52,7 @@ class _WebViewPageState extends State<WebViewPage> {
     if (Platform.isIOS) {
       await controller?.clearCache();
     } else {
-      await cookieManager?.clearCookies();
+      await cookieManager.clearCookies();
     }
   }
 

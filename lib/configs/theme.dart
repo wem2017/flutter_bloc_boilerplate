@@ -52,10 +52,12 @@ class AppTheme {
 
   static ThemeData lightTheme = CollectionTheme.getCollectionTheme(
     theme: currentTheme.lightTheme,
+    font: currentFont,
   );
 
   static ThemeData darkTheme = CollectionTheme.getCollectionTheme(
     theme: currentTheme.darkTheme,
+    font: currentFont,
   );
 
   ///Singleton factory

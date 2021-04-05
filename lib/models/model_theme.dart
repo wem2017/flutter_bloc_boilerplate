@@ -15,10 +15,10 @@ class ThemeModel {
 
   factory ThemeModel.fromJson(Map<String, dynamic> json) {
     return ThemeModel(
-      json['name'] as String ?? "",
-      json['color'] as Color ?? Colors.black,
-      json['light'] as String ?? "",
-      json['dark'] as String ?? "",
+      json['name'] ?? "",
+      json['color'] ?? Colors.black,
+      json['light'] ?? "",
+      json['dark'] ?? "",
     );
   }
 }

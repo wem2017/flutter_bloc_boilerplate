@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FontSetting extends StatefulWidget {
-  FontSetting({Key key}) : super(key: key);
+  FontSetting({Key? key}) : super(key: key);
 
   @override
   _FontSettingState createState() {
@@ -16,6 +16,16 @@ class FontSetting extends StatefulWidget {
 
 class _FontSettingState extends State<FontSetting> {
   String currentFont = AppTheme.currentFont;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   ///On change Font
   Future<void> onChange() async {
@@ -28,7 +38,7 @@ class _FontSettingState extends State<FontSetting> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          Translate.of(context).translate('font'),
+          Translate.of(context)!.translate('font'),
         ),
       ),
       body: SafeArea(
@@ -38,7 +48,7 @@ class _FontSettingState extends State<FontSetting> {
               child: ListView.builder(
                 padding: EdgeInsets.only(left: 16, top: 8),
                 itemBuilder: (context, index) {
-                  Widget trailing;
+                  Widget? trailing;
                   final item = AppTheme.fontSupport[index];
                   if (item == currentFont) {
                     trailing = Icon(
@@ -47,7 +57,7 @@ class _FontSettingState extends State<FontSetting> {
                     );
                   }
                   return AppListTitle(
-                    title: item ?? 'system_phone',
+                    title: item,
                     trailing: trailing,
                     onPressed: () {
                       setState(() {
@@ -64,7 +74,7 @@ class _FontSettingState extends State<FontSetting> {
               child: BlocBuilder<ThemeBloc, ThemeState>(
                 builder: (context, theme) {
                   return AppButton(
-                    Translate.of(context).translate('apply'),
+                    Translate.of(context)!.translate('apply'),
                     onPressed: onChange,
                     loading: theme is ThemeUpdating,
                   );

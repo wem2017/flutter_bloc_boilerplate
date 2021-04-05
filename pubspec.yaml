@@ -2,27 +2,27 @@ name: envato
 description: wem2017.github.io
 version: 1.0.0+1
 environment:
-  sdk: ">=2.10.3 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  firebase_core: ^1.0.1
+  firebase_core: ^1.0.2
   firebase_analytics: ^7.1.1
-  firebase_messaging: ^9.0.0
+  firebase_messaging: ^9.1.0
   shared_preferences: ^2.0.5
   intl: ^0.17.0
   bloc: ^7.0.0
   flutter_bloc: ^7.0.0
-  webview_flutter: ^2.0.2
-  dio: ^4.0.0-prev2
+  webview_flutter: ^2.0.3
+  dio: ^4.0.0
   shimmer: ^2.0.0-nullsafety.0
   rxdart: ^0.26.0
   sqflite: ^2.0.0+3
   path_provider: ^2.0.1
-  flutter_svprogresshud: ^0.0.6
+  flutter_svprogresshud: ^0.0.7
 
 flutter:
   assets:

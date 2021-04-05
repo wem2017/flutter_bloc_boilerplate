@@ -33,7 +33,9 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
       final oldLanguage = UtilPreferences.getString(Preferences.language);
       final oldDarkOption = UtilPreferences.getString(Preferences.darkOption);
 
-      DarkOption darkOption;
+      DarkOption? darkOption;
+      String? font;
+      ThemeModel? theme;
 
       ///Setup Language
       if (oldLanguage != null) {
@@ -43,18 +45,18 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
       }
 
       ///Find font support available
-      final String font = AppTheme.fontSupport.firstWhere((item) {
-        return item == oldFont;
-      }, orElse: () {
-        return null;
-      });
+      try {
+        font = AppTheme.fontSupport.firstWhere((item) {
+          return item == oldFont;
+        });
+      } catch (e) {}
 
       ///Find theme support available
-      final ThemeModel theme = AppTheme.themeSupport.firstWhere((item) {
-        return item.name == oldTheme;
-      }, orElse: () {
-        return null;
-      });
+      try {
+        theme = AppTheme.themeSupport.firstWhere((item) {
+          return item.name == oldTheme;
+        });
+      } catch (e) {}
 
       ///check old dark option
 

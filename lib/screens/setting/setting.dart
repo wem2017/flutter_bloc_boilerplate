@@ -9,7 +9,7 @@ import 'package:envato/widgets/widget.dart';
 import 'package:flutter/material.dart';
 
 class Setting extends StatefulWidget {
-  Setting({Key key}) : super(key: key);
+  Setting({Key? key}) : super(key: key);
 
   @override
   _SettingState createState() {
@@ -21,6 +21,16 @@ class _SettingState extends State<Setting> {
   final userRepository = UserRepository();
 
   DarkOption darkOption = AppTheme.darkThemeOption;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   ///On Change Dark Option
   void onChangeDarkOption() {
@@ -34,15 +44,13 @@ class _SettingState extends State<Setting> {
 
   ///Show notification received
   Future<void> showDarkModeSetting() async {
-    setState(() {
-      darkOption = AppTheme.darkThemeOption;
-    });
     final result = await showDialog<bool>(
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
+        darkOption = AppTheme.darkThemeOption;
         return AlertDialog(
-          title: Text(Translate.of(context).translate('dark_mode')),
+          title: Text(Translate.of(context)!.translate('dark_mode')),
           content: StatefulBuilder(
             builder: (context, setState) {
               return SingleChildScrollView(
@@ -50,12 +58,12 @@ class _SettingState extends State<Setting> {
                   children: <Widget>[
                     CheckboxListTile(
                       title: Text(
-                        Translate.of(context).translate(
+                        Translate.of(context)!.translate(
                           UtilTheme.exportLangTheme(DarkOption.dynamic),
                         ),
                       ),
                       value: darkOption == DarkOption.dynamic,
-                      onChanged: (bool value) {
+                      onChanged: (value) {
                         setState(() {
                           darkOption = DarkOption.dynamic;
                         });
@@ -63,12 +71,12 @@ class _SettingState extends State<Setting> {
                     ),
                     CheckboxListTile(
                       title: Text(
-                        Translate.of(context).translate(
+                        Translate.of(context)!.translate(
                           UtilTheme.exportLangTheme(DarkOption.alwaysOn),
                         ),
                       ),
                       value: darkOption == DarkOption.alwaysOn,
-                      onChanged: (bool value) {
+                      onChanged: (value) {
                         setState(() {
                           darkOption = DarkOption.alwaysOn;
                         });
@@ -76,12 +84,12 @@ class _SettingState extends State<Setting> {
                     ),
                     CheckboxListTile(
                       title: Text(
-                        Translate.of(context).translate(
+                        Translate.of(context)!.translate(
                           UtilTheme.exportLangTheme(DarkOption.alwaysOff),
                         ),
                       ),
                       value: darkOption == DarkOption.alwaysOff,
-                      onChanged: (bool value) {
+                      onChanged: (value) {
                         setState(() {
                           darkOption = DarkOption.alwaysOff;
                         });
@@ -94,14 +102,14 @@ class _SettingState extends State<Setting> {
           ),
           actions: <Widget>[
             AppButton(
-              Translate.of(context).translate('close'),
+              Translate.of(context)!.translate('close'),
               onPressed: () {
                 Navigator.pop(context, false);
               },
               type: ButtonType.text,
             ),
             AppButton(
-              Translate.of(context).translate('apply'),
+              Translate.of(context)!.translate('apply'),
               onPressed: () {
                 Navigator.pop(context, true);
               },
@@ -110,7 +118,7 @@ class _SettingState extends State<Setting> {
         );
       },
     );
-    if (result) {
+    if (result == true) {
       onChangeDarkOption();
     }
   }
@@ -121,7 +129,7 @@ class _SettingState extends State<Setting> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          Translate.of(context).translate('setting'),
+          Translate.of(context)!.translate('setting'),
         ),
         actions: <Widget>[],
       ),
@@ -134,7 +142,7 @@ class _SettingState extends State<Setting> {
                 Icons.language_outlined,
                 color: Theme.of(context).primaryColor,
               ),
-              title: Translate.of(context).translate('language'),
+              title: Translate.of(context)!.translate('language'),
               onPressed: () {
                 onNavigate(Routes.changeLanguage);
               },
@@ -161,7 +169,7 @@ class _SettingState extends State<Setting> {
                 Icons.color_lens_outlined,
                 color: Theme.of(context).primaryColor,
               ),
-              title: Translate.of(context).translate('theme'),
+              title: Translate.of(context)!.translate('theme'),
               onPressed: () {
                 onNavigate(Routes.themeSetting);
               },
@@ -177,12 +185,12 @@ class _SettingState extends State<Setting> {
                 Icons.nights_stay_outlined,
                 color: Theme.of(context).primaryColor,
               ),
-              title: Translate.of(context).translate('dark_mode'),
+              title: Translate.of(context)!.translate('dark_mode'),
               onPressed: showDarkModeSetting,
               trailing: Row(
                 children: <Widget>[
                   Text(
-                    Translate.of(context).translate(
+                    Translate.of(context)!.translate(
                       UtilTheme.exportLangTheme(AppTheme.darkThemeOption),
                     ),
                     style: Theme.of(context).textTheme.caption,
@@ -202,17 +210,14 @@ class _SettingState extends State<Setting> {
                 Icons.font_download_outlined,
                 color: Theme.of(context).primaryColor,
               ),
-              title: Translate.of(context).translate('font'),
+              title: Translate.of(context)!.translate('font'),
               onPressed: () {
                 onNavigate(Routes.fontSetting);
               },
               trailing: Row(
                 children: <Widget>[
                   Text(
-                    AppTheme.currentFont ??
-                        Translate.of(context).translate(
-                          'system_phone',
-                        ),
+                    AppTheme.currentFont,
                     style: Theme.of(context).textTheme.caption,
                   ),
                   RotatedBox(

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignIn extends StatefulWidget {
-  SignIn({Key key}) : super(key: key);
+  SignIn({Key? key}) : super(key: key);
 
   @override
   _SignInState createState() {
@@ -21,6 +21,11 @@ class _SignInState extends State<SignIn> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   ///On login
   Future<void> onLogin() async {
     AppBloc.loginBloc.add(OnLogin(username: 'code', password: 'result'));
@@ -32,7 +37,7 @@ class _SignInState extends State<SignIn> {
       context,
       Routes.webView,
       arguments: WebViewModel(
-        title: Translate.of(context).translate('privacy'),
+        title: Translate.of(context)!.translate('privacy'),
         url: "https://saleboltapp.com/privacy-policy.html",
       ),
     );
@@ -46,7 +51,7 @@ class _SignInState extends State<SignIn> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            Translate.of(context).translate('sign_in'),
+            Translate.of(context)!.translate('sign_in'),
           ),
           content: SingleChildScrollView(
             child: ListBody(
@@ -60,7 +65,7 @@ class _SignInState extends State<SignIn> {
           ),
           actions: <Widget>[
             AppButton(
-              Translate.of(context).translate('close'),
+              Translate.of(context)!.translate('close'),
               onPressed: () {
                 Navigator.pop(context, false);
               },
@@ -115,20 +120,21 @@ class _SignInState extends State<SignIn> {
                                   'SaleBolt',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headline5
+                                      .headline5!
                                       .copyWith(fontWeight: FontWeight.bold),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.all(24),
                                 child: Text(
-                                  Translate.of(context).translate('app_slogan'),
+                                  Translate.of(context)!
+                                      .translate('app_slogan'),
                                   style: Theme.of(context).textTheme.bodyText2,
                                   textAlign: TextAlign.center,
                                 ),
                               ),
                               AppButton(
-                                Translate.of(context).translate(
+                                Translate.of(context)!.translate(
                                   'login_with_envato',
                                 ),
                                 icon: Image.asset(
@@ -148,7 +154,7 @@ class _SignInState extends State<SignIn> {
                     Padding(
                       padding: EdgeInsets.only(top: 8),
                       child: Text(
-                        Translate.of(context).translate('app_noted'),
+                        Translate.of(context)!.translate('app_noted'),
                         style: Theme.of(context).textTheme.caption,
                         textAlign: TextAlign.center,
                       ),
@@ -156,7 +162,7 @@ class _SignInState extends State<SignIn> {
                     Padding(
                       padding: EdgeInsets.only(top: 8),
                       child: AppButton(
-                        Translate.of(context).translate('privacy'),
+                        Translate.of(context)!.translate('privacy'),
                         onPressed: onPrivacy,
                         type: ButtonType.text,
                       ),

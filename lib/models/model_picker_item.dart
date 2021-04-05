@@ -3,7 +3,7 @@ class PickerItemModel {
   final value;
 
   PickerItemModel({
-    this.label,
-    this.value,
+    required this.label,
+    required this.value,
   });
 }

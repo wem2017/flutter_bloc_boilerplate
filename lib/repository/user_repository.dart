@@ -11,15 +11,15 @@ class UserRepository {
 
   ///Fetch api login
   Future<dynamic> login({
-    String username,
-    password,
+    required String username,
+    required password,
   }) async {
     final params = {'username': ''};
     return await Api.login(params);
   }
 
-  Future<void> saveUser({UserModel user}) async {
-    Batch batch = DatabaseProvider.database.batch();
+  Future<void> saveUser({required UserModel user}) async {
+    Batch batch = DatabaseProvider.database!.batch();
     batch.insert(
       DatabaseProvider.tableUser,
       user.toDatabase(),
@@ -28,8 +28,8 @@ class UserRepository {
     await batch.commit(noResult: true);
   }
 
-  Future<UserModel> getUser() async {
-    final List userList = await DatabaseProvider.database.query(
+  Future<UserModel?> getUser() async {
+    final List userList = await DatabaseProvider.database!.query(
       DatabaseProvider.tableUser,
       limit: 1,
     );

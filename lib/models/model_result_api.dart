@@ -4,15 +4,15 @@ class ResultModel {
   final data;
 
   ResultModel({
-    this.success,
-    this.message,
+    required this.success,
+    required this.message,
     this.data,
   });
 
   factory ResultModel.fromJson(Map<String, dynamic> json) {
     return ResultModel(
-      success: json['success'] as bool ?? false,
-      message: json['message'] as String ?? '',
+      success: json['success'] ?? false,
+      message: json['message'] ?? '',
       data: json['data'],
     );
   }

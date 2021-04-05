@@ -14,20 +14,14 @@ class UtilValidator {
 
   static validate(
     String data, {
-    ValidateType type,
-    int min,
-    int max,
+    ValidateType? type,
+    int? min,
+    int? max,
     bool allowEmpty = false,
   }) {
     ///Empty
     if (!allowEmpty && data.isEmpty) {
       return error_empty;
-    }
-
-    ///Length
-    if (min != null ||
-        max != null && (data.length < min || data.length > max)) {
-      return '$error_range ($min-$max)';
     }
 
     switch (type) {

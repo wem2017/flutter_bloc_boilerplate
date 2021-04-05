@@ -7,7 +7,7 @@ import 'package:envato/widgets/widget.dart';
 import 'package:flutter/material.dart';
 
 class LanguageSetting extends StatefulWidget {
-  LanguageSetting({Key key}) : super(key: key);
+  LanguageSetting({Key? key}) : super(key: key);
 
   @override
   _LanguageSettingState createState() {
@@ -20,6 +20,16 @@ class _LanguageSettingState extends State<LanguageSetting> {
 
   List<Locale> listLanguage = AppLanguage.supportLanguage;
   Locale languageSelected = AppLanguage.defaultLanguage;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   ///On filter language
   void onFilter(String text) {
@@ -49,7 +59,7 @@ class _LanguageSettingState extends State<LanguageSetting> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(Translate.of(context).translate('change_language')),
+        title: Text(Translate.of(context)!.translate('change_language')),
       ),
       body: SafeArea(
         child: Column(
@@ -57,8 +67,8 @@ class _LanguageSettingState extends State<LanguageSetting> {
             Padding(
               padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
               child: AppTextInput(
-                labelText: Translate.of(context).translate('language'),
-                hintText: Translate.of(context).translate('search'),
+                labelText: Translate.of(context)!.translate('language'),
+                hintText: Translate.of(context)!.translate('search'),
                 controller: textLanguageController,
                 maxLines: 1,
                 onChanged: onFilter,
@@ -68,7 +78,7 @@ class _LanguageSettingState extends State<LanguageSetting> {
               child: ListView.builder(
                 padding: EdgeInsets.only(left: 16),
                 itemBuilder: (context, index) {
-                  Widget trailing;
+                  Widget? trailing;
                   final item = listLanguage[index];
                   if (item == languageSelected) {
                     trailing = Icon(
@@ -94,7 +104,7 @@ class _LanguageSettingState extends State<LanguageSetting> {
             Padding(
               padding: EdgeInsets.all(16),
               child: AppButton(
-                Translate.of(context).translate('confirm'),
+                Translate.of(context)!.translate('confirm'),
                 onPressed: () {
                   changeLanguage();
                 },

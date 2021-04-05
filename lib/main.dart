@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
-  void onEvent(BlocBase bloc, Object event) {
+  void onEvent(Bloc bloc, Object? event) {
     UtilLogger.log('BLOC EVENT', event);
     super.onEvent(bloc, event);
   }
@@ -18,13 +18,14 @@ class AppBlocObserver extends BlocObserver {
   }
 
   @override
-  void onTransition(BlocBase bloc, Transition transition) {
+  void onTransition(Bloc bloc, Transition transition) {
     UtilLogger.log('BLOC TRANSITION', transition);
     super.onTransition(bloc, transition);
   }
 }
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
   runApp(App());
 }

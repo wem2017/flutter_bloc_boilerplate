@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class AppListTitle extends StatelessWidget {
   final String title;
-  final String subtitle;
-  final Widget trailing;
-  final Widget icon;
-  final VoidCallback onPressed;
+  final String? subtitle;
+  final Widget? trailing;
+  final Widget? icon;
+  final VoidCallback? onPressed;
   final bool border;
 
   AppListTitle({
-    Key key,
-    this.title,
+    Key? key,
+    required this.title,
     this.subtitle,
     this.trailing,
     this.icon,
@@ -20,7 +20,7 @@ class AppListTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Border borderWidget;
+    Border? borderWidget;
     Widget subTitle = Container();
     Widget iconWidget = Container();
     if (icon != null) {
@@ -33,10 +33,10 @@ class AppListTitle extends StatelessWidget {
       subTitle = Padding(
         padding: EdgeInsets.only(top: 8),
         child: Text(
-          subtitle,
+          subtitle!,
           style: Theme.of(context)
               .textTheme
-              .bodyText2
+              .bodyText2!
               .copyWith(color: Theme.of(context).primaryColor),
         ),
       );
@@ -72,7 +72,7 @@ class AppListTitle extends StatelessWidget {
                             title,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle1
+                                .subtitle1!
                                 .copyWith(fontWeight: FontWeight.w500),
                           ),
                           subTitle

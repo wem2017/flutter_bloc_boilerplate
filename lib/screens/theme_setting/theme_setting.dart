@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThemeSetting extends StatefulWidget {
-  ThemeSetting({Key key}) : super(key: key);
+  ThemeSetting({Key? key}) : super(key: key);
 
   @override
   _ThemeSettingState createState() {
@@ -17,6 +17,16 @@ class ThemeSetting extends StatefulWidget {
 
 class _ThemeSettingState extends State<ThemeSetting> {
   ThemeModel currentTheme = AppTheme.currentTheme;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   ///On Change Theme
   void onChange() {
@@ -29,7 +39,7 @@ class _ThemeSettingState extends State<ThemeSetting> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          Translate.of(context).translate('theme'),
+          Translate.of(context)!.translate('theme'),
         ),
       ),
       body: SafeArea(
@@ -78,7 +88,7 @@ class _ThemeSettingState extends State<ThemeSetting> {
                                   padding: EdgeInsets.only(left: 8),
                                 ),
                                 Text(
-                                  Translate.of(context).translate(item.name),
+                                  Translate.of(context)!.translate(item.name),
                                   style: Theme.of(context).textTheme.subtitle2,
                                 )
                               ],
@@ -103,7 +113,7 @@ class _ThemeSettingState extends State<ThemeSetting> {
               child: BlocBuilder<ThemeBloc, ThemeState>(
                 builder: (context, theme) {
                   return AppButton(
-                    Translate.of(context).translate('apply'),
+                    Translate.of(context)!.translate('apply'),
                     onPressed: onChange,
                     loading: theme is ThemeUpdating,
                   );

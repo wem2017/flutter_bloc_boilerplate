@@ -6,7 +6,7 @@ class OnAuthCheck extends AuthEvent {}
 
 class OnAuthProcess extends AuthEvent {
   final UserModel user;
-  OnAuthProcess({this.user});
+  OnAuthProcess({required this.user});
 }
 
 class OnClear extends AuthEvent {}

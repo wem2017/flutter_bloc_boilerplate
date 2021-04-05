@@ -8,9 +8,9 @@ class DatabaseProvider {
   static final String tableUser = 'User';
   static final String tablePortfolio = 'Portfolio';
   static final String tableProduct = 'Product';
-  static Database database;
+  static Database? database;
 
-  Future<Database> createDatabase() async {
+  Future<Database?> createDatabase() async {
     final documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, name);
     database = await openDatabase(
@@ -25,7 +25,7 @@ class DatabaseProvider {
   Future<void> clearDatabase() async {
     final documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, name);
-    await database.close();
+    await database!.close();
     await deleteDatabase(path);
     await createDatabase();
   }

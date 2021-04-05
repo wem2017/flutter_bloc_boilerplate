@@ -3,21 +3,21 @@ class UserModel {
   String image;
 
   UserModel({
-    this.id,
-    this.image,
+    required this.id,
+    required this.image,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: json['_id'] as String ?? '',
-      image: json['image'] as String ?? '',
+      id: json['_id'],
+      image: json['image'] ?? '',
     );
   }
 
   factory UserModel.fromDatabase(Map<String, dynamic> json) {
     return UserModel(
-      id: json['id'] as String ?? '',
-      image: json['image'] as String ?? '',
+      id: json['id'],
+      image: json['image'] ?? '',
     );
   }
 

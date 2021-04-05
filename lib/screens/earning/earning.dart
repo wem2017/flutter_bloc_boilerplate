@@ -2,7 +2,7 @@ import 'package:envato/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class Earning extends StatefulWidget {
-  Earning({Key key}) : super(key: key);
+  Earning({Key? key}) : super(key: key);
 
   @override
   _EarningState createState() {
@@ -26,13 +26,13 @@ class _EarningState extends State<Earning> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Translate.of(context).translate('earning'),
+          Translate.of(context)!.translate('earning'),
         ),
       ),
       body: Container(
         child: Center(
           child: Text(
-            Translate.of(context).translate('earning'),
+            Translate.of(context)!.translate('earning'),
           ),
         ),
       ),

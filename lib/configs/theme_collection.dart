@@ -5,9 +5,9 @@ class CollectionTheme {
 
   static ThemeData getCollectionTheme({
     String theme = "defaultLight",
-    String font,
+    required String font,
   }) {
-    ColorScheme colorScheme;
+    ColorScheme? colorScheme;
     switch (theme) {
       case "defaultLight":
         colorScheme = ColorScheme.light(
@@ -81,7 +81,7 @@ class CollectionTheme {
       default:
     }
 
-    final dark = colorScheme.brightness == Brightness.dark;
+    final dark = colorScheme!.brightness == Brightness.dark;
     final primaryColor = dark ? colorScheme.surface : colorScheme.primary;
     final appBarColor = dark ? colorScheme.surface : colorScheme.background;
     final indicatorColor = dark ? colorScheme.onSurface : colorScheme.primary;
@@ -107,8 +107,12 @@ class CollectionTheme {
       indicatorColor: indicatorColor,
       applyElevationOverlayColor: dark,
       colorScheme: colorScheme,
+
+      ///Custom
       fontFamily: font,
-      buttonColor: colorScheme.primary,
+      dialogTheme: DialogTheme(
+        backgroundColor: colorScheme.surface,
+      ),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: colorScheme.surface,
         shape: OutlineInputBorder(
@@ -118,6 +122,15 @@ class CollectionTheme {
             topRight: Radius.circular(24),
           ),
         ),
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: colorScheme.surface,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: colorScheme.primary,
+        showUnselectedLabels: true,
+      ),
+      dividerTheme: DividerThemeData(
+        thickness: 0.75,
       ),
     );
   }

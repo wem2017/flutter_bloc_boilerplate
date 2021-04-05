@@ -5,7 +5,7 @@ import 'package:envato/widgets/widget.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
-  Profile({Key key}) : super(key: key);
+  Profile({Key? key}) : super(key: key);
 
   @override
   _ProfileState createState() {
@@ -17,6 +17,11 @@ class _ProfileState extends State<Profile> {
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   ///On logout
@@ -34,14 +39,14 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Translate.of(context).translate('profile'),
+          Translate.of(context)!.translate('profile'),
         ),
       ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
             AppListTitle(
-              title: Translate.of(context).translate('setting'),
+              title: Translate.of(context)!.translate('setting'),
               icon: Icon(
                 Icons.settings_outlined,
                 color: Theme.of(context).primaryColor,
@@ -62,7 +67,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             AppListTitle(
-              title: Translate.of(context).translate('sign_out'),
+              title: Translate.of(context)!.translate('sign_out'),
               icon: Icon(
                 Icons.logout,
                 color: Theme.of(context).primaryColor,

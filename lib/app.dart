@@ -17,14 +17,14 @@ class _AppState extends State<App> {
 
   @override
   void initState() {
-    AppBloc.applicationBloc.add(OnSetupApplication());
     super.initState();
+    AppBloc.applicationBloc.add(OnSetupApplication());
   }
 
   @override
   void dispose() {
-    AppBloc.dispose();
     super.dispose();
+    AppBloc.dispose();
   }
 
   @override

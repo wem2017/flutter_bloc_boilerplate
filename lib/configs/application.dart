@@ -8,7 +8,7 @@ class Application {
   static String dateFormat = 'HH:MM, MMM dd yyyy';
   static String clientID = "sale-tracker-vhf6zehy";
   static String domain = "https://api.saleboltapp.com";
-  static SharedPreferences preferences;
+  static SharedPreferences? preferences;
 
   Future<void> setPreferences() async {
     preferences = await SharedPreferences.getInstance();

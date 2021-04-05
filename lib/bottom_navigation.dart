@@ -5,7 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatefulWidget {
-  BottomNavigation({Key key}) : super(key: key);
+  BottomNavigation({Key? key}) : super(key: key);
 
   @override
   _BottomNavigationState createState() {
@@ -16,21 +16,20 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigationState extends State<BottomNavigation>
     with WidgetsBindingObserver {
   int selectedIndex = 0;
-  double bottomBarHeight;
 
   @override
   void initState() {
+    super.initState();
     FirebaseMessaging.onMessage.listen((message) {
       UtilLogger.log("onMessage", message);
     });
-    WidgetsBinding.instance.addObserver(this);
-    super.initState();
+    WidgetsBinding.instance!.addObserver(this);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+    WidgetsBinding.instance!.removeObserver(this);
   }
 
   ///Handle AppState
@@ -63,19 +62,16 @@ class _BottomNavigationState extends State<BottomNavigation>
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard_outlined),
-            label: Translate.of(context).translate('dashboard'),
+            label: Translate.of(context)!.translate('dashboard'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
-            label: Translate.of(context).translate('account'),
+            label: Translate.of(context)!.translate('account'),
           ),
         ],
-        selectedFontSize: 10,
+        selectedFontSize: 12,
         unselectedFontSize: 10,
-        selectedItemColor: Theme.of(context).primaryColor,
         currentIndex: selectedIndex,
-        type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: true,
         onTap: _onItemTapped,
       ),
     );

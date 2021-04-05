@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 enum ButtonType { normal, outline, round, roundOutline, text }
 
 class AppButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String text;
   final bool loading;
   final bool disabled;
   final ButtonType type;
-  final Widget icon;
+  final Widget? icon;
 
   AppButton(
     this.text, {
-    Key key,
+    Key? key,
     this.onPressed,
     this.icon,
     this.loading = false,
@@ -45,7 +45,7 @@ class AppButton extends StatelessWidget {
         if (icon != null) {
           button = OutlinedButton.icon(
             onPressed: disabled ? null : onPressed,
-            icon: icon,
+            icon: icon!,
             label: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +68,7 @@ class AppButton extends StatelessWidget {
         if (icon != null) {
           button = ElevatedButton.icon(
             onPressed: disabled ? null : onPressed,
-            icon: icon,
+            icon: icon!,
             label: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +91,7 @@ class AppButton extends StatelessWidget {
         if (icon != null) {
           button = OutlinedButton.icon(
             onPressed: disabled ? null : onPressed,
-            icon: icon,
+            icon: icon!,
             label: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -114,7 +114,7 @@ class AppButton extends StatelessWidget {
         if (icon != null) {
           button = TextButton.icon(
             onPressed: disabled ? null : onPressed,
-            icon: icon,
+            icon: icon!,
             label: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -135,7 +135,7 @@ class AppButton extends StatelessWidget {
                 text,
                 style: Theme.of(context)
                     .textTheme
-                    .button
+                    .button!
                     .copyWith(color: Colors.white),
               ),
               _buildLoading()
@@ -145,7 +145,7 @@ class AppButton extends StatelessWidget {
         if (icon != null) {
           button = ElevatedButton.icon(
             onPressed: disabled ? null : onPressed,
-            icon: icon,
+            icon: icon!,
             label: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -154,7 +154,7 @@ class AppButton extends StatelessWidget {
                   text,
                   style: Theme.of(context)
                       .textTheme
-                      .button
+                      .button!
                       .copyWith(color: Colors.white),
                 ),
                 _buildLoading()

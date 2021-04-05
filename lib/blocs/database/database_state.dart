@@ -4,7 +4,7 @@ class DatabaseInitial extends DatabaseState {}
 
 class DatabaseProcessing extends DatabaseState {
   final int value;
-  DatabaseProcessing({this.value});
+  DatabaseProcessing({required this.value});
 }
 
 class DatabaseSyncCompleted extends DatabaseState {}
