@@ -4,11 +4,13 @@ A boilerplate project created in flutter using Bloc. Boilerplate supports build 
 
 ## Getting Started
 
-The Boilerplate contains the minimal implementation required to create a new library or project.
+The Boilerplate contains the minimal implementation required to create a new library or project. boilerplate use for build app [SaleBolt](https://apps.apple.com/us/app/salebolt-sales-tracke-r/id1526910309)
 
 ![alt text](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/overview.png?raw=true)
 
-## How to Use 
+![alt text](https://github.com/wem2017/flutter_bloc_boilerplate/blob/master/screenshot/qrcode.png?raw=true)
+
+## How to Use
 
 **Step 1:**
 
@@ -20,10 +22,10 @@ https://github.com/wem2017/flutter_bloc_boilerplate.git
 
 **Step 2:**
 
-Go to project root and execute the following command in console to get the required dependencies: 
+Go to project root and execute the following command in console to get the required dependencies:
 
 ```
-flutter pub get 
+flutter pub get
 ```
 
 **Step 3:**
@@ -32,7 +34,7 @@ Open with Editer VSCode or Android Studio and run
 
 ## Boilerplate Features:
 
-* Splash
+* SplashScreen
 * Login
 * Home
 * Routing
@@ -41,7 +43,7 @@ Open with Editer VSCode or Android Studio and run
 * Database
 * Validation
 * Logging
-* Multiple Theme and Dark Theme
+* Multiple Theme, Dark Theme, Custom Colors
 * Multiple language
 * Multiple font
 * CI/CD github action
