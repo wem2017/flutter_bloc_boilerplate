@@ -20,13 +20,12 @@ class NotificationService: UNNotificationServiceExtension {
         
         if let bestAttemptContent = bestAttemptContent {
 
-            guard let imageURLString =
-              bestAttemptContent.userInfo["image"] as? String else {
+            guard let imageURL = bestAttemptContent.userInfo["image"] as? String else {
               contentHandler(bestAttemptContent)
               return
             }
 
-            getMediaAttachment(for: imageURLString) { [weak self] image in
+            getMediaAttachment(for: imageURL) { [weak self] image in
 
               guard
                 let self = self,

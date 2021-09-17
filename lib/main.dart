@@ -24,8 +24,9 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
-  runApp(App());
+
+  runApp(const App());
 }

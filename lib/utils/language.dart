@@ -1,4 +1,4 @@
-import 'package:envato/configs/config.dart';
+import 'package:envato/blocs/bloc.dart';
 
 class UtilLanguage {
   ///Get Language Global Language Name
@@ -44,7 +44,7 @@ class UtilLanguage {
   }
 
   static bool isRTL() {
-    switch (AppLanguage.defaultLanguage.languageCode) {
+    switch (AppBloc.languageCubit.state.languageCode) {
       case "ar":
       case "he":
         return true;
@@ -54,7 +54,7 @@ class UtilLanguage {
   }
 
   ///Singleton factory
-  static final UtilLanguage _instance = UtilLanguage._internal();
+  static final _instance = UtilLanguage._internal();
 
   factory UtilLanguage() {
     return _instance;

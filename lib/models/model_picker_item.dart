@@ -1,6 +1,6 @@
 class PickerItemModel {
   final String label;
-  final value;
+  final dynamic value;
 
   PickerItemModel({
     required this.label,

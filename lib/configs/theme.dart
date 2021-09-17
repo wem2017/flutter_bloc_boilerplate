@@ -1,21 +1,13 @@
-import 'package:envato/configs/config.dart';
 import 'package:envato/models/model.dart';
-import 'package:flutter/material.dart';
 
 enum DarkOption { dynamic, alwaysOn, alwaysOff }
 
 class AppTheme {
-  ///Optional Color
-  static Color blueColor = Color.fromRGBO(93, 173, 226, 1);
-  static Color pinkColor = Color.fromRGBO(165, 105, 189, 1);
-  static Color greenColor = Color.fromRGBO(88, 214, 141, 1);
-  static Color yellowColor = Color.fromRGBO(253, 198, 10, 1);
-
   ///Default font
-  static String currentFont = 'ProximaNova';
+  static const String defaultFont = 'ProximaNova';
 
   ///List Font support
-  static List<String> fontSupport = [
+  static final List<String> fontSupport = [
     "OpenSans",
     "ProximaNova",
     "Raleway",
@@ -24,41 +16,38 @@ class AppTheme {
   ];
 
   ///Default Theme
-  static ThemeModel currentTheme = ThemeModel.fromJson({
+  static final ThemeModel defaultTheme = ThemeModel.fromJson({
     "name": "default",
-    "color": Color(0xff82B541),
-    "light": "defaultLight",
-    "dark": "defaultDark",
+    "primary": 'ff82B541',
+    "secondary": "ffff8a65",
   });
 
   ///List Theme Support in Application
-  static List<ThemeModel> themeSupport = [
+  static final List<ThemeModel> themeSupport = [
     {
       "name": "default",
-      "color": Color(0xff82B541),
-      "light": "defaultLight",
-      "dark": "defaultDark",
+      "primary": 'ff82B541',
+      "secondary": "ffff8a65",
     },
     {
       "name": "orange",
-      "color": Color(0xfff4a261),
-      "light": "orangeLight",
-      "dark": "orangeDark",
+      "primary": 'fff4a261',
+      "secondary": "ff2A9D8F",
+    },
+    {
+      "name": "blue",
+      "primary": 'ff077ef0',
+      "secondary": "ff5B876C",
+    },
+    {
+      "name": "summer",
+      "primary": 'ff53ac7d',
+      "secondary": "ff832400",
     },
   ].map((item) => ThemeModel.fromJson(item)).toList();
 
   ///Dark Theme option
-  static DarkOption darkThemeOption = DarkOption.dynamic;
-
-  static ThemeData lightTheme = CollectionTheme.getCollectionTheme(
-    theme: currentTheme.lightTheme,
-    font: currentFont,
-  );
-
-  static ThemeData darkTheme = CollectionTheme.getCollectionTheme(
-    theme: currentTheme.darkTheme,
-    font: currentFont,
-  );
+  static const DarkOption darkThemeOption = DarkOption.dynamic;
 
   ///Singleton factory
   static final AppTheme _instance = AppTheme._internal();

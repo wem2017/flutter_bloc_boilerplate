@@ -1,133 +1,172 @@
 import 'package:flutter/material.dart';
 
-enum ButtonType { normal, outline, round, roundOutline, text }
+enum ButtonType { normal, outline, text }
 
 class AppButton extends StatelessWidget {
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
   final String text;
   final bool loading;
   final bool disabled;
   final ButtonType type;
   final Widget? icon;
+  final MainAxisSize mainAxisSize;
 
-  AppButton(
+  const AppButton(
     this.text, {
     Key? key,
-    this.onPressed,
+    required this.onPressed,
     this.icon,
     this.loading = false,
     this.disabled = false,
     this.type = ButtonType.normal,
+    this.mainAxisSize = MainAxisSize.min,
   }) : super(key: key);
-
-  Widget _buildLoading() {
-    if (!loading) return Container();
-    return Container(
-      margin: EdgeInsets.only(left: 8, right: 8),
-      width: 14,
-      height: 14,
-      child: CircularProgressIndicator(strokeWidth: 1.5),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
+    Widget buildLoading(Color color) {
+      if (!loading) return Container();
+      return Row(
+        children: [
+          const SizedBox(width: 8),
+          SizedBox(
+            width: 14,
+            height: 14,
+            child: CircularProgressIndicator(
+              strokeWidth: 1.5,
+              color: color,
+            ),
+          )
+        ],
+      );
+    }
+
     switch (type) {
       case ButtonType.outline:
-        Widget button = OutlinedButton(
-          onPressed: disabled ? null : onPressed,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[Text(text), _buildLoading()],
-          ),
-        );
         if (icon != null) {
-          button = OutlinedButton.icon(
+          return OutlinedButton.icon(
+            style: OutlinedButton.styleFrom(
+              minimumSize: const Size(64, 44),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
             onPressed: disabled ? null : onPressed,
             icon: icon!,
             label: Row(
+              mainAxisSize: mainAxisSize,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[Text(text), _buildLoading()],
+              children: <Widget>[
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.button!.copyWith(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold),
+                ),
+                buildLoading(Theme.of(context).primaryColor)
+              ],
             ),
           );
         }
-
-        return button;
-
-      case ButtonType.round:
-        Widget button = ElevatedButton(
+        return OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            minimumSize: const Size(64, 44),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
           onPressed: disabled ? null : onPressed,
           child: Row(
+            mainAxisSize: mainAxisSize,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[Text(text), _buildLoading()],
+            children: <Widget>[
+              Text(
+                text,
+                style: Theme.of(context).textTheme.button!.copyWith(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold),
+              ),
+              buildLoading(Theme.of(context).primaryColor)
+            ],
           ),
         );
-        if (icon != null) {
-          button = ElevatedButton.icon(
-            onPressed: disabled ? null : onPressed,
-            icon: icon!,
-            label: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[Text(text), _buildLoading()],
-            ),
-          );
-        }
-
-        return button;
-
-      case ButtonType.roundOutline:
-        Widget button = OutlinedButton(
-          onPressed: disabled ? null : onPressed,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[Text(text), _buildLoading()],
-          ),
-        );
-        if (icon != null) {
-          button = OutlinedButton.icon(
-            onPressed: disabled ? null : onPressed,
-            icon: icon!,
-            label: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[Text(text), _buildLoading()],
-            ),
-          );
-        }
-
-        return button;
 
       case ButtonType.text:
-        Widget button = TextButton(
-          onPressed: disabled ? null : onPressed,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[Text(text), _buildLoading()],
-          ),
-        );
         if (icon != null) {
-          button = TextButton.icon(
+          return TextButton.icon(
             onPressed: disabled ? null : onPressed,
             icon: icon!,
             label: Row(
+              mainAxisSize: mainAxisSize,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[Text(text), _buildLoading()],
+              children: <Widget>[
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.button!.copyWith(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold),
+                ),
+                buildLoading(Theme.of(context).primaryColor)
+              ],
             ),
           );
         }
-
-        return button;
-      default:
-        Widget button = ElevatedButton(
+        return TextButton(
           onPressed: disabled ? null : onPressed,
           child: Row(
+            mainAxisSize: mainAxisSize,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                text,
+                style: Theme.of(context).textTheme.button!.copyWith(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold),
+              ),
+              buildLoading(Theme.of(context).primaryColor)
+            ],
+          ),
+        );
+      default:
+        if (icon != null) {
+          return ElevatedButton.icon(
+            onPressed: disabled ? null : onPressed,
+            style: ElevatedButton.styleFrom(
+              minimumSize: const Size(64, 44),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            icon: icon!,
+            label: Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.button!.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+                buildLoading(Colors.white)
+              ],
+            ),
+          );
+        }
+        return ElevatedButton(
+          onPressed: disabled ? null : onPressed,
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size(64, 44),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          child: Row(
+            mainAxisSize: mainAxisSize,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -136,34 +175,12 @@ class AppButton extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .button!
-                    .copyWith(color: Colors.white),
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
-              _buildLoading()
+              buildLoading(Colors.white)
             ],
           ),
         );
-        if (icon != null) {
-          button = ElevatedButton.icon(
-            onPressed: disabled ? null : onPressed,
-            icon: icon!,
-            label: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  text,
-                  style: Theme.of(context)
-                      .textTheme
-                      .button!
-                      .copyWith(color: Colors.white),
-                ),
-                _buildLoading()
-              ],
-            ),
-          );
-        }
-
-        return button;
     }
   }
 }

@@ -3,7 +3,7 @@ import 'package:shimmer/shimmer.dart';
 
 class AppPlaceholder extends StatelessWidget {
   final Widget child;
-  AppPlaceholder({Key? key, required this.child}) : super(key: key);
+  const AppPlaceholder({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

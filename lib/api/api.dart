@@ -2,23 +2,62 @@ import 'dart:async';
 
 import 'package:envato/api/http_manager.dart';
 import 'package:envato/models/model.dart';
-import 'package:envato/repository/repository.dart';
 
 class Api {
   static final httpManager = HTTPManager();
-  static final userRepository = UserRepository();
 
-  ///URL API
-  static const String LOGIN = "/api/sync/login";
+  static const String login = "/api/sync/login";
+  static const String validateToken = "/api/sync/token";
+  static const String user = "/api/private/user";
 
-  ///Login api
-  static Future<dynamic> login(params) async {
-    Map<String, dynamic> result = await httpManager.post(
-      url: LOGIN,
-      data: params,
-    );
-    result['success'] = true;
-    result['data'] = {"_id": ''};
+  static Future<ResultModel> requestLogin(params) async {
+    await Future.delayed(const Duration(seconds: 1));
+    // final result = await httpManager.post(url: login, data: params);
+    final result = {
+      'success': true,
+      'data': {
+        "user": {
+          "_id": "qrcode",
+          "available_earnings": "",
+          "username": "qrcode",
+        },
+        "token": 'token',
+      }
+    };
+    return ResultModel.fromJson(result);
+  }
+
+  static Future<ResultModel> requestValidateToken() async {
+    await Future.delayed(const Duration(seconds: 1));
+    // final result = await httpManager.post(url: validateToken);
+    final result = {
+      'success': true,
+      'data': {
+        "user": {
+          "_id": "qrcode",
+          "available_earnings": "",
+          "username": "qrcode",
+        },
+        "token": 'token',
+      }
+    };
+    return ResultModel.fromJson(result);
+  }
+
+  static Future<ResultModel> requestUser() async {
+    await Future.delayed(const Duration(seconds: 1));
+    // final result = await httpManager.get(url: user);
+    final result = {
+      'success': true,
+      'data': {
+        "user": {
+          "_id": "qrcode",
+          "available_earnings": "",
+          "username": "qrcode",
+        },
+        "token": 'token',
+      }
+    };
     return ResultModel.fromJson(result);
   }
 

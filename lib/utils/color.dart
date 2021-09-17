@@ -14,8 +14,12 @@ class UtilColor {
     return Colors.black;
   }
 
+  static String getStringColor(Color color) {
+    return color.value.toRadixString(16);
+  }
+
   ///Singleton factory
-  static final UtilColor _instance = UtilColor._internal();
+  static final _instance = UtilColor._internal();
 
   factory UtilColor() {
     return _instance;

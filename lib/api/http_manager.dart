@@ -1,65 +1,183 @@
+import 'dart:convert' show utf8;
+
 import 'package:dio/dio.dart';
 import 'package:envato/blocs/bloc.dart';
 import 'package:envato/configs/config.dart';
-import 'package:envato/utils/logger.dart';
-
-final List<String> rejectCode = [
-  'jwt expired',
-  'un_authorized',
-  'invalid-token'
-];
-
-Map<String, dynamic> errorHandle({required DioError error}) {
-  UtilLogger.log("ERROR", error);
-  String message = "unknown_error";
-
-  Map<String, dynamic>? data;
-
-  switch (error.type) {
-    case DioErrorType.sendTimeout:
-    case DioErrorType.receiveTimeout:
-      message = "request_time_out";
-      break;
-    case DioErrorType.response:
-      if (error.response!.data is Map<String, dynamic>) {
-        data = error.response!.data;
-        message = data!['reason'] ?? data['message'] ?? message;
-      }
-      break;
-    default:
-      message = "connect_to_server_fail";
-      break;
-  }
-
-  ///Logout
-  if (rejectCode.contains(message)) {
-    AppBloc.authBloc.add(OnClear());
-  }
-
-  return {
-    "success": false,
-    "message": message,
-    "data": data,
-  };
-}
+import 'package:envato/utils/utils.dart';
 
 class HTTPManager {
-  BaseOptions baseOptions = BaseOptions(
-    baseUrl: Application.domain,
-    connectTimeout: 10000,
-    receiveTimeout: 10000,
-    responseType: ResponseType.json,
-  );
+  late final Dio dioInternal;
+  late final Dio dioExternal;
 
-  BaseOptions exportOption() {
-    String? token;
-    final Map<String, dynamic> header = {"uuid": ''};
-    baseOptions.headers.addAll(header);
+  final List<String> rejectCode = [
+    'jwt expired',
+    'un_authorized',
+    'user_not_found'
+  ];
 
-    if (token != null) {
-      baseOptions.headers["Authorization"] = token;
-    }
-    return baseOptions;
+  HTTPManager() {
+    ///Dio internal
+    dioInternal = Dio(
+      BaseOptions(
+        baseUrl: Application.domain,
+        connectTimeout: 10000,
+        receiveTimeout: 10000,
+        responseType: ResponseType.json,
+      ),
+    );
+
+    ///Dio external
+    dioExternal = Dio(
+      BaseOptions(
+        baseUrl: "https://api.envato.com",
+        connectTimeout: 10000,
+        receiveTimeout: 10000,
+        responseType: ResponseType.json,
+      ),
+    );
+
+    ///Interceptors internal
+    dioInternal.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          Map<String, dynamic> headers = {
+            "uuid": Application.device?.uuid,
+            "name": utf8.encode(Application.device?.name ?? ''),
+            "model": Application.device?.model,
+            "version": Application.device?.version,
+            "appVersion": Application.version,
+            "type": Application.device?.type,
+            "token": Application.device?.token,
+          };
+          String? token = AppBloc.userCubit.state?.token;
+          if (token != null) {
+            headers["Authorization"] = "Bearer $token";
+          }
+          options.headers.addAll(headers);
+          printRequest(options);
+          return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          return handler.next(response);
+        },
+        onError: (DioError error, handler) async {
+          if (error.type != DioErrorType.response) {
+            return handler.next(error);
+          }
+          final message = error.response?.data['message'];
+
+          ///Logout
+          if (rejectCode.contains(message)) {
+            dioInternal.lock();
+            dioInternal.interceptors.responseLock.lock();
+            dioInternal.interceptors.errorLock.lock();
+            dioExternal.lock();
+            dioExternal.interceptors.responseLock.lock();
+            dioExternal.interceptors.errorLock.lock();
+            await AppBloc.signCubit.onLogOut();
+            dioExternal.unlock();
+            dioExternal.interceptors.responseLock.unlock();
+            dioExternal.interceptors.errorLock.unlock();
+            dioInternal.unlock();
+            dioInternal.interceptors.responseLock.unlock();
+            dioInternal.interceptors.errorLock.unlock();
+          }
+          final response = Response(
+            requestOptions: error.requestOptions,
+            data: error.response?.data,
+          );
+          return handler.resolve(response);
+        },
+      ),
+    );
+
+    ///Interceptors external
+    dioExternal.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          Map<String, dynamic> headers = {};
+          String? token = AppBloc.userCubit.state?.envatoToken;
+          if (token != null) {
+            headers["Authorization"] = "Bearer $token";
+          }
+          options.headers.addAll(headers);
+          printRequest(options);
+          return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          response.data = {
+            "success": true,
+            "data": response.data,
+          };
+          return handler.next(response);
+        },
+        onError: (DioError error, handler) async {
+          if (error.type != DioErrorType.response) {
+            return handler.next(error);
+          }
+          final options = error.response!.requestOptions;
+          final data = error.response?.data ?? {};
+
+          if (error.response?.statusCode == 403) {
+            dioExternal.lock();
+            dioExternal.interceptors.responseLock.lock();
+            dioExternal.interceptors.errorLock.lock();
+            final user = await AppBloc.userCubit.onLoadUser();
+            if (user != null) {
+              String? token = user.envatoToken;
+              if (token != null) {
+                options.headers["Authorization"] = "Bearer $token";
+              }
+              dioExternal.unlock();
+              dioExternal.interceptors.responseLock.unlock();
+              dioExternal.interceptors.errorLock.unlock();
+              printRequest(options);
+              dioExternal.fetch(options).then(
+                (r) => handler.resolve(r),
+                onError: (e) {
+                  handler.reject(e);
+                },
+              );
+              return;
+            }
+          }
+
+          if (error.response?.statusCode == 429) {
+            int retry = 60;
+            retry = int.tryParse(
+              error.response!.headers['retry-after']![0],
+            )!;
+            AppBloc.messageBloc.add(OnMessage(message: 'limit_request'));
+            dioExternal.lock();
+            dioExternal.interceptors.responseLock.lock();
+            dioExternal.interceptors.errorLock.lock();
+            await Future.delayed(Duration(seconds: retry));
+            dioExternal.unlock();
+            dioExternal.interceptors.responseLock.unlock();
+            dioExternal.interceptors.errorLock.unlock();
+            printRequest(options);
+            dioExternal.fetch(options).then(
+              (r) => handler.resolve(r),
+              onError: (e) {
+                handler.reject(e);
+              },
+            );
+            return;
+          }
+
+          final response = Response(
+            requestOptions: error.requestOptions,
+            data: {
+              "success": false,
+              "message": data['reason'] ?? data['error'],
+              "data": data,
+            },
+          );
+
+          return handler.resolve(response);
+        },
+      ),
+    );
   }
 
   ///Post method
@@ -67,19 +185,21 @@ class HTTPManager {
     required String url,
     Map<String, dynamic>? data,
     Options? options,
+    bool external = false,
   }) async {
-    UtilLogger.log("POST URL", url);
-    UtilLogger.log("DATA", data);
-    Dio dio = new Dio(exportOption());
+    Dio request = dioInternal;
+    if (external) {
+      request = dioExternal;
+    }
     try {
-      final response = await dio.post(
+      final response = await request.post(
         url,
         data: data,
         options: options,
       );
       return response.data;
     } on DioError catch (error) {
-      return errorHandle(error: error);
+      return errorHandle(error);
     }
   }
 
@@ -88,25 +208,56 @@ class HTTPManager {
     required String url,
     Map<String, dynamic>? params,
     Options? options,
+    bool external = false,
   }) async {
-    UtilLogger.log("GET URL", url);
-    UtilLogger.log("PARAMS", params);
-    Dio dio = new Dio(exportOption());
+    Dio request = dioInternal;
+    if (external) {
+      request = dioExternal;
+    }
     try {
-      final response = await dio.get(
+      final response = await request.get(
         url,
         queryParameters: params,
         options: options,
       );
       return response.data;
     } on DioError catch (error) {
-      return errorHandle(error: error);
+      return errorHandle(error);
     }
   }
 
-  factory HTTPManager() {
-    return HTTPManager._internal();
+  ///Print request info
+  void printRequest(RequestOptions options) {
+    UtilLogger.log("BEFORE REQUEST ====================================");
+    UtilLogger.log("${options.method} URL", options.path);
+    UtilLogger.log("HEADERS", options.headers);
+    if (options.method == 'GET') {
+      UtilLogger.log("PARAMS", options.queryParameters);
+    } else {
+      UtilLogger.log("DATA", options.data);
+    }
   }
 
-  HTTPManager._internal();
+  ///Error common handle
+  Map<String, dynamic> errorHandle(DioError error) {
+    String message = "unknown_error";
+    Map<String, dynamic> data = {};
+
+    switch (error.type) {
+      case DioErrorType.sendTimeout:
+      case DioErrorType.receiveTimeout:
+        message = "request_time_out";
+        break;
+
+      default:
+        message = "cannot_connect_server";
+        break;
+    }
+
+    return {
+      "success": false,
+      "message": message,
+      "data": data,
+    };
+  }
 }

@@ -3,46 +3,46 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc.dart';
 
 class AppBloc {
-  static final applicationBloc = ApplicationBloc();
-  static final databaseBloc = DatabaseBloc();
-  static final languageBloc = LanguageBloc();
-  static final themeBloc = ThemeBloc();
-  static final authBloc = AuthBloc();
-  static final loginBloc = LoginBloc();
-  static final appStateBloc = AppStateBloc();
+  static final applicationCubit = ApplicationCubit();
+  static final languageCubit = LanguageCubit();
+  static final themeCubit = ThemeCubit();
+  static final authenticationCubit = AuthenticationCubit();
+  static final signCubit = SignCubit();
+  static final userCubit = UserCubit();
+  static final messageBloc = MessageBloc();
 
   static final List<BlocProvider> providers = [
-    BlocProvider<ApplicationBloc>(
-      create: (context) => applicationBloc,
+    BlocProvider<ApplicationCubit>(
+      create: (context) => applicationCubit,
     ),
-    BlocProvider<DatabaseBloc>(
-      create: (context) => databaseBloc,
+    BlocProvider<LanguageCubit>(
+      create: (context) => languageCubit,
     ),
-    BlocProvider<LanguageBloc>(
-      create: (context) => languageBloc,
+    BlocProvider<ThemeCubit>(
+      create: (context) => themeCubit,
     ),
-    BlocProvider<AppStateBloc>(
-      create: (context) => appStateBloc,
+    BlocProvider<AuthenticationCubit>(
+      create: (context) => authenticationCubit,
     ),
-    BlocProvider<ThemeBloc>(
-      create: (context) => themeBloc,
+    BlocProvider<SignCubit>(
+      create: (context) => signCubit,
     ),
-    BlocProvider<AuthBloc>(
-      create: (context) => authBloc,
+    BlocProvider<UserCubit>(
+      create: (context) => userCubit,
     ),
-    BlocProvider<LoginBloc>(
-      create: (context) => loginBloc,
+    BlocProvider<MessageBloc>(
+      create: (context) => messageBloc,
     ),
   ];
 
   static void dispose() {
-    applicationBloc.close();
-    databaseBloc.close();
-    languageBloc.close();
-    appStateBloc.close();
-    themeBloc.close();
-    authBloc.close();
-    loginBloc.close();
+    applicationCubit.close();
+    languageCubit.close();
+    themeCubit.close();
+    authenticationCubit.close();
+    signCubit.close();
+    userCubit.close();
+    messageBloc.close();
   }
 
   ///Singleton factory

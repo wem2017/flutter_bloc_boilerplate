@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 class AppLanguage {
   ///Default Language
-  static Locale defaultLanguage = Locale("en");
+  static const Locale defaultLanguage = Locale("en");
 
   ///List Language support in Application
-  static List<Locale> supportLanguage = [
-    Locale("en"),
-    Locale("vi"),
-    Locale("da"),
-    Locale("de"),
-    Locale("el"),
-    Locale("fr"),
-    Locale("id"),
-    Locale("ja"),
-    Locale("ko"),
-    Locale("nl"),
-    Locale("zh"),
-    Locale("ru"),
+  static final List<Locale> supportLanguage = [
+    const Locale("en"),
+    const Locale("vi"),
+    const Locale("da"),
+    const Locale("de"),
+    const Locale("el"),
+    const Locale("fr"),
+    const Locale("id"),
+    const Locale("ja"),
+    const Locale("ko"),
+    const Locale("nl"),
+    const Locale("zh"),
+    const Locale("ru"),
   ];
 
   ///Singleton factory

@@ -2,71 +2,71 @@ import 'package:envato/configs/config.dart';
 
 class UtilPreferences {
   static Future<bool> clear() {
-    return Application.preferences!.clear();
+    return Preferences.instance!.clear();
   }
 
   static bool containsKey(String key) {
-    return Application.preferences!.containsKey(key);
+    return Preferences.instance!.containsKey(key);
   }
 
   static dynamic get(String key) {
-    return Application.preferences!.get(key);
+    return Preferences.instance!.get(key);
   }
 
   static bool? getBool(String key) {
-    return Application.preferences!.getBool(key);
+    return Preferences.instance!.getBool(key);
   }
 
   static double? getDouble(String key) {
-    return Application.preferences!.getDouble(key);
+    return Preferences.instance!.getDouble(key);
   }
 
   static int? getInt(String key) {
-    return Application.preferences!.getInt(key);
+    return Preferences.instance!.getInt(key);
   }
 
   static Set<String> getKeys() {
-    return Application.preferences!.getKeys();
+    return Preferences.instance!.getKeys();
   }
 
   static String? getString(String key) {
-    return Application.preferences!.getString(key);
+    return Preferences.instance!.getString(key);
   }
 
   static List<String>? getStringList(String key) {
-    return Application.preferences!.getStringList(key);
+    return Preferences.instance!.getStringList(key);
   }
 
   static Future<void> reload() {
-    return Application.preferences!.reload();
+    return Preferences.instance!.reload();
   }
 
   static Future<bool> remove(String key) {
-    return Application.preferences!.remove(key);
+    return Preferences.instance!.remove(key);
   }
 
   static Future<bool> setBool(String key, bool value) {
-    return Application.preferences!.setBool(key, value);
+    return Preferences.instance!.setBool(key, value);
   }
 
   static Future<bool> setDouble(String key, double value) {
-    return Application.preferences!.setDouble(key, value);
+    return Preferences.instance!.setDouble(key, value);
   }
 
   static Future<bool> setInt(String key, int value) {
-    return Application.preferences!.setInt(key, value);
+    return Preferences.instance!.setInt(key, value);
   }
 
   static Future<bool> setString(String key, String value) {
-    return Application.preferences!.setString(key, value);
+    return Preferences.instance!.setString(key, value);
   }
 
   static Future<bool> setStringList(String key, List<String> value) {
-    return Application.preferences!.setStringList(key, value);
+    return Preferences.instance!.setStringList(key, value);
   }
 
   ///Singleton factory
-  static final UtilPreferences _instance = UtilPreferences._internal();
+  static final _instance = UtilPreferences._internal();
 
   factory UtilPreferences() {
     return _instance;

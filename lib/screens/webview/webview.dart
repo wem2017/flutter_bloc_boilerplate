@@ -8,7 +8,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatefulWidget {
   final WebViewModel web;
-  WebViewPage({Key? key, required this.web}) : super(key: key);
+  const WebViewPage({Key? key, required this.web}) : super(key: key);
 
   @override
   _WebViewPageState createState() {
@@ -35,12 +35,12 @@ class _WebViewPageState extends State<WebViewPage> {
 
   @override
   void dispose() {
-    super.dispose();
     SVProgressHUD.dismiss();
+    super.dispose();
   }
 
   void onTransitionCompleted() async {
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
     setState(() {
       transitionCompleted = true;
     });
@@ -57,7 +57,7 @@ class _WebViewPageState extends State<WebViewPage> {
   }
 
   ///After load page finish
-  Future<void> onPageFinished(BuildContext context, String url) async {
+  void onPageFinished(BuildContext context, String url) async {
     SVProgressHUD.dismiss();
 
     ///Show WebView when Completed
@@ -83,6 +83,7 @@ class _WebViewPageState extends State<WebViewPage> {
       return WebView(
         initialUrl: widget.web.url,
         javascriptMode: widget.web.javascriptMode,
+        userAgent: "random",
         onWebViewCreated: (webViewController) {
           controller = webViewController;
         },
@@ -94,7 +95,7 @@ class _WebViewPageState extends State<WebViewPage> {
         },
         navigationDelegate: (request) {
           final callback = widget.web.callbackUrl;
-          if (callback != null && request.url.startsWith(callback)) {
+          if (request.url.startsWith(callback!)) {
             callbackUrl = request.url;
           }
           return NavigationDecision.navigate;
@@ -110,16 +111,15 @@ class _WebViewPageState extends State<WebViewPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        elevation: 0,
         title: Text(widget.web.title),
       ),
-      body: SafeArea(
-        child: IndexedStack(
-          children: [
-            buildWebView(),
-            Container(color: Theme.of(context).backgroundColor)
-          ],
-          index: loaded ? 0 : 1,
-        ),
+      body: IndexedStack(
+        children: [
+          buildWebView(),
+          Container(color: Theme.of(context).backgroundColor)
+        ],
+        index: loaded ? 0 : 1,
       ),
     );
   }

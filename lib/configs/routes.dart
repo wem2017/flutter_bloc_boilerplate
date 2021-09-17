@@ -14,7 +14,6 @@ class Routes {
   static const String setting = "/setting";
   static const String fontSetting = "/fontSetting";
   static const String statementFilter = "/statementFilter";
-  static const String statementRangePicker = "/statementRangePicker";
   static const String pickerScreen = "/pickerScreen";
   static const String notification = "/notification";
   static const String portfolio = "/portfolio";
@@ -28,38 +27,40 @@ class Routes {
   static const String webView = "/webView";
   static const String report = "/report";
   static const String invoiceCheck = "/invoiceCheck";
+  static const String qrScan = "/qrScan";
+  static const String manageAccount = "/manageAccount";
 
-  Route<dynamic> generateRoute(RouteSettings settings) {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case signIn:
         return MaterialPageRoute(
           builder: (context) {
-            return SignIn();
+            return const SignIn();
           },
           fullscreenDialog: true,
         );
       case changeLanguage:
         return MaterialPageRoute(
           builder: (context) {
-            return LanguageSetting();
+            return const LanguageSetting();
           },
         );
       case themeSetting:
         return MaterialPageRoute(
           builder: (context) {
-            return ThemeSetting();
+            return const ThemeSetting();
           },
         );
       case setting:
         return MaterialPageRoute(
           builder: (context) {
-            return Setting();
+            return const Setting();
           },
         );
       case fontSetting:
         return MaterialPageRoute(
           builder: (context) {
-            return FontSetting();
+            return const FontSetting();
           },
         );
 
@@ -76,7 +77,17 @@ class Routes {
         final web = settings.arguments as WebViewModel;
         return MaterialPageRoute(
           builder: (context) {
-            return WebViewPage(web: web);
+            return WebViewPage(
+              web: web,
+            );
+          },
+          fullscreenDialog: true,
+        );
+
+      case qrScan:
+        return MaterialPageRoute(
+          builder: (context) {
+            return const QRScan();
           },
           fullscreenDialog: true,
         );
@@ -86,7 +97,7 @@ class Routes {
           builder: (context) {
             return Scaffold(
               appBar: AppBar(
-                title: Text("Not Found"),
+                title: const Text("Not Found"),
               ),
               body: Center(
                 child: Text('No path for ${settings.name}'),

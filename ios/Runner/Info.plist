@@ -22,10 +22,12 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-8318136058462894~3524953443</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Would like to access your camera roll to upload your photo.</string>
+	<string>Would like to access your camera roll to to scan QR codes.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We need access to your location to show you relevant place result.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -34,6 +36,10 @@
 	<string>Would like to access your microphone to upload your video.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Would like to access your photo to upload photo.</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>ConfigurationIntent</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

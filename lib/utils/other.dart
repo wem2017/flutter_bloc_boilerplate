@@ -1,3 +1,4 @@
+import 'package:envato/configs/config.dart';
 import 'package:flutter/material.dart';
 
 class UtilOther {
@@ -11,11 +12,32 @@ class UtilOther {
   }
 
   static hiddenKeyboard(BuildContext context) {
-    FocusScope.of(context).requestFocus(new FocusNode());
+    FocusScope.of(context).requestFocus(FocusNode());
+  }
+
+  static exportMarketIcon(String market) {
+    switch (market) {
+      case "3DOcean":
+        return Images.ocean;
+      case "AudioJungle":
+        return Images.audioJungle;
+      case "CodeCanyon":
+        return Images.codeCanyon;
+      case "GraphicRiver":
+        return Images.graphics;
+      case "PhotoDune":
+        return Images.photo;
+      case "ThemeForest":
+        return Images.themeForest;
+      case "VideoHive":
+        return Images.video;
+      default:
+        return Images.envato;
+    }
   }
 
   ///Singleton factory
-  static final UtilOther _instance = UtilOther._internal();
+  static final _instance = UtilOther._internal();
 
   factory UtilOther() {
     return _instance;

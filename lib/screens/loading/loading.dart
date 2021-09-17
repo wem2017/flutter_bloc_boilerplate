@@ -3,7 +3,7 @@ import 'package:envato/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
-  SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   _SplashScreenState createState() {
@@ -37,9 +37,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset(Images.Logo, width: 100, height: 100),
+                  Image.asset(Images.logo, width: 100, height: 100),
                   Padding(
-                    padding: EdgeInsets.only(top: 8),
+                    padding: const EdgeInsets.only(top: 8),
                     child: Text(
                       'SaleBolt',
                       style: Theme.of(context).textTheme.headline5!.copyWith(
@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
             bottom: 24,
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 28,
                   height: 28,
                   child: CircularProgressIndicator(
@@ -65,12 +65,12 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        Translate.of(context)!.translate('processing'),
+                        Translate.of(context).translate('processing'),
                         style: Theme.of(context)
                             .textTheme
                             .button!

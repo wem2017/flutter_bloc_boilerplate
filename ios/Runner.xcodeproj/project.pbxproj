@@ -17,10 +17,26 @@
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
+		92369E59260D8561005CF1A7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92369E58260D8561005CF1A7 /* WidgetKit.framework */; };
+		92369E5B260D8561005CF1A7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92369E5A260D8561005CF1A7 /* SwiftUI.framework */; };
+		92369E5E260D8561005CF1A7 /* SaleBolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92369E5D260D8561005CF1A7 /* SaleBolt.swift */; };
+		92369E61260D8562005CF1A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92369E60260D8562005CF1A7 /* Assets.xcassets */; };
+		92369E63260D8562005CF1A7 /* SaleBolt.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 92369E5F260D8561005CF1A7 /* SaleBolt.intentdefinition */; };
+		92369E64260D8562005CF1A7 /* SaleBolt.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 92369E5F260D8561005CF1A7 /* SaleBolt.intentdefinition */; };
+		92369E67260D8562005CF1A7 /* SaleBoltExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 92369E57260D8561005CF1A7 /* SaleBoltExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		927097BC2612C6AE00E353F5 /* SmallWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927097BB2612C6AE00E353F5 /* SmallWidgetModel.swift */; };
+		927097BD2612C6AE00E353F5 /* SmallWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927097BB2612C6AE00E353F5 /* SmallWidgetModel.swift */; };
+		927097BE2612C6AE00E353F5 /* SmallWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927097BB2612C6AE00E353F5 /* SmallWidgetModel.swift */; };
+		927097F42612C9BF00E353F5 /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927097F32612C9BF00E353F5 /* NetworkImage.swift */; };
+		927EA2D2261183CF00F9AC54 /* SmallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927EA2D1261183CF00F9AC54 /* SmallWidget.swift */; };
+		927EA2DE261187E200F9AC54 /* MediumWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927EA2DD261187E200F9AC54 /* MediumWidget.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		BB349C2D2636A8FC005A41A9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB349C2C2636A8FC005A41A9 /* StoreKit.framework */; };
 		BB44ABF324B4E45400F55471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB44ABF224B4E45400F55471 /* GoogleService-Info.plist */; };
+		BBBFBDC8261F022700D95C50 /* MediumWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBFBDC7261F022700D95C50 /* MediumWidgetModel.swift */; };
+		BBBFBDC9261F022700D95C50 /* MediumWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBFBDC7261F022700D95C50 /* MediumWidgetModel.swift */; };
 		BBEEE38324BA1A02007EDE63 /* crash.wav in Resources */ = {isa = PBXBuildFile; fileRef = BBEEE38224BA1A02007EDE63 /* crash.wav */; };
 		CCB624E4EEE7F793E4019348 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5AB8949B5525D235D80A666 /* Pods_Runner.framework */; };
 /* End PBXBuildFile section */
@@ -33,6 +49,13 @@
 			remoteGlobalIDString = 134746F924DA4E020010D31B;
 			remoteInfo = NotificationExtension;
 		};
+		92369E65260D8562005CF1A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92369E56260D8561005CF1A7;
+			remoteInfo = SaleBoltExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +65,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				92369E67260D8562005CF1A7 /* SaleBoltExtension.appex in Embed App Extensions */,
 				1347470124DA4E020010D31B /* NotificationExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -71,6 +95,21 @@
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
+		92369E57260D8561005CF1A7 /* SaleBoltExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SaleBoltExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		92369E58260D8561005CF1A7 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		92369E5A260D8561005CF1A7 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		92369E5D260D8561005CF1A7 /* SaleBolt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleBolt.swift; sourceTree = "<group>"; };
+		92369E5F260D8561005CF1A7 /* SaleBolt.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SaleBolt.intentdefinition; sourceTree = "<group>"; };
+		92369E60260D8562005CF1A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		92369E62260D8562005CF1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		927097BB2612C6AE00E353F5 /* SmallWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetModel.swift; sourceTree = "<group>"; };
+		927097F32612C9BF00E353F5 /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
+		92773FA42612FFEF0052596B /* RunnerRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunnerRelease.entitlements; sourceTree = "<group>"; };
+		92773FA72613005A0052596B /* SaleBoltExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SaleBoltExtensionRelease.entitlements; sourceTree = "<group>"; };
+		92773FF2261308A90052596B /* SaleBoltExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SaleBoltExtensionDebug.entitlements; sourceTree = "<group>"; };
+		92773FF5261308BB0052596B /* SaleBoltExtensionProfile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SaleBoltExtensionProfile.entitlements; sourceTree = "<group>"; };
+		927EA2D1261183CF00F9AC54 /* SmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidget.swift; sourceTree = "<group>"; };
+		927EA2DD261187E200F9AC54 /* MediumWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidget.swift; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,8 +118,10 @@
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74393E79C9C6460D5863261 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		BB349C2C2636A8FC005A41A9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BB44ABF224B4E45400F55471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB44ABF424B4E48400F55471 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
+		BBBFBDC7261F022700D95C50 /* MediumWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidgetModel.swift; sourceTree = "<group>"; };
 		BBEEE38224BA1A02007EDE63 /* crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crash.wav; sourceTree = "<group>"; };
 		C05DF4843C5B2A34C0B0A581 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		E5AB8949B5525D235D80A666 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,11 +136,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		92369E54260D8561005CF1A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92369E5B260D8561005CF1A7 /* SwiftUI.framework in Frameworks */,
+				92369E59260D8561005CF1A7 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97C146EB1CF9000F007C117D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CCB624E4EEE7F793E4019348 /* Pods_Runner.framework in Frameworks */,
+				BB349C2D2636A8FC005A41A9 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +160,10 @@
 		0A105AF9AE8BDBB36CD85641 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB349C2C2636A8FC005A41A9 /* StoreKit.framework */,
 				E5AB8949B5525D235D80A666 /* Pods_Runner.framework */,
+				92369E58260D8561005CF1A7 /* WidgetKit.framework */,
+				92369E5A260D8561005CF1A7 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,6 +196,29 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		92369E5C260D8561005CF1A7 /* SaleBolt */ = {
+			isa = PBXGroup;
+			children = (
+				92369E5D260D8561005CF1A7 /* SaleBolt.swift */,
+				927EA2D1261183CF00F9AC54 /* SmallWidget.swift */,
+				927EA2DD261187E200F9AC54 /* MediumWidget.swift */,
+				927097F32612C9BF00E353F5 /* NetworkImage.swift */,
+				92369E5F260D8561005CF1A7 /* SaleBolt.intentdefinition */,
+				92369E60260D8562005CF1A7 /* Assets.xcassets */,
+				92369E62260D8562005CF1A7 /* Info.plist */,
+			);
+			path = SaleBolt;
+			sourceTree = "<group>";
+		};
+		927097BA2612C60B00E353F5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				927097BB2612C6AE00E353F5 /* SmallWidgetModel.swift */,
+				BBBFBDC7261F022700D95C50 /* MediumWidgetModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,10 +233,15 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
+				92773FF5261308BB0052596B /* SaleBoltExtensionProfile.entitlements */,
+				92773FF2261308A90052596B /* SaleBoltExtensionDebug.entitlements */,
+				92773FA72613005A0052596B /* SaleBoltExtensionRelease.entitlements */,
 				1347470724DA574B0010D31B /* NotificationExtensionUtils */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
+				927097BA2612C60B00E353F5 /* Models */,
 				134746FB24DA4E020010D31B /* NotificationExtension */,
+				92369E5C260D8561005CF1A7 /* SaleBolt */,
 				97C146EF1CF9000F007C117D /* Products */,
 				5A65972000301E5A6B42B2F4 /* Pods */,
 				0A105AF9AE8BDBB36CD85641 /* Frameworks */,
@@ -171,6 +253,7 @@
 			children = (
 				97C146EE1CF9000F007C117D /* Runner.app */,
 				134746FA24DA4E020010D31B /* NotificationExtension.appex */,
+				92369E57260D8561005CF1A7 /* SaleBoltExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -178,6 +261,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				92773FA42612FFEF0052596B /* RunnerRelease.entitlements */,
 				BB44ABF424B4E48400F55471 /* Runner.entitlements */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				BB44ABF224B4E45400F55471 /* GoogleService-Info.plist */,
@@ -221,6 +305,23 @@
 			productReference = 134746FA24DA4E020010D31B /* NotificationExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		92369E56260D8561005CF1A7 /* SaleBoltExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92369E6B260D8562005CF1A7 /* Build configuration list for PBXNativeTarget "SaleBoltExtension" */;
+			buildPhases = (
+				92369E53260D8561005CF1A7 /* Sources */,
+				92369E54260D8561005CF1A7 /* Frameworks */,
+				92369E55260D8561005CF1A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SaleBoltExtension;
+			productName = SaleBoltExtension;
+			productReference = 92369E57260D8561005CF1A7 /* SaleBoltExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		97C146ED1CF9000F007C117D /* Runner */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
@@ -239,6 +340,7 @@
 			);
 			dependencies = (
 				1347470024DA4E020010D31B /* PBXTargetDependency */,
+				92369E66260D8562005CF1A7 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
@@ -251,12 +353,15 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					134746F924DA4E020010D31B = {
 						CreatedOnToolsVersion = 11.6;
+					};
+					92369E56260D8561005CF1A7 = {
+						CreatedOnToolsVersion = 12.4;
 					};
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -279,6 +384,7 @@
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
 				134746F924DA4E020010D31B /* NotificationExtension */,
+				92369E56260D8561005CF1A7 /* SaleBoltExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -288,6 +394,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92369E55260D8561005CF1A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92369E61260D8562005CF1A7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,8 +496,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				1347470D24DA57BE0010D31B /* NetworkError.swift in Sources */,
+				927097BD2612C6AE00E353F5 /* SmallWidgetModel.swift in Sources */,
 				1347470A24DA579E0010D31B /* ImageDownloader.swift in Sources */,
 				134746FD24DA4E020010D31B /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92369E53260D8561005CF1A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92369E63260D8562005CF1A7 /* SaleBolt.intentdefinition in Sources */,
+				92369E5E260D8561005CF1A7 /* SaleBolt.swift in Sources */,
+				927EA2DE261187E200F9AC54 /* MediumWidget.swift in Sources */,
+				927EA2D2261183CF00F9AC54 /* SmallWidget.swift in Sources */,
+				BBBFBDC9261F022700D95C50 /* MediumWidgetModel.swift in Sources */,
+				927097BE2612C6AE00E353F5 /* SmallWidgetModel.swift in Sources */,
+				927097F42612C9BF00E353F5 /* NetworkImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +522,10 @@
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1347470C24DA57BE0010D31B /* NetworkError.swift in Sources */,
+				92369E64260D8562005CF1A7 /* SaleBolt.intentdefinition in Sources */,
 				1347470924DA579E0010D31B /* ImageDownloader.swift in Sources */,
+				927097BC2612C6AE00E353F5 /* SmallWidgetModel.swift in Sources */,
+				BBBFBDC8261F022700D95C50 /* MediumWidgetModel.swift in Sources */,
 				1347470E24DA57E30010D31B /* NotificationService.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 			);
@@ -406,6 +538,11 @@
 			isa = PBXTargetDependency;
 			target = 134746F924DA4E020010D31B /* NotificationExtension */;
 			targetProxy = 134746FF24DA4E020010D31B /* PBXContainerItemProxy */;
+		};
+		92369E66260D8562005CF1A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92369E56260D8561005CF1A7 /* SaleBoltExtension */;
+			targetProxy = 92369E65260D8562005CF1A7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -450,7 +587,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.2.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huynh.envato.NotificationExtension;
@@ -485,7 +622,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.2.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huynh.envato.NotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -504,8 +641,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3C2ZJ87Z72;
 				ENABLE_BITCODE = NO;
@@ -517,11 +654,11 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.2.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huynh.envato.NotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.huynh.envato.NotificationExtension";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -569,7 +706,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -586,8 +723,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3C2ZJ87Z72;
 				ENABLE_BITCODE = NO;
@@ -605,13 +742,118 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huynh.envato;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.huynh.envato";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Profile;
+		};
+		92369E68260D8562005CF1A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SaleBoltExtensionDebug.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3C2ZJ87Z72;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SaleBolt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huynh.envato.SaleBolt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		92369E69260D8562005CF1A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SaleBoltExtensionRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3C2ZJ87Z72;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SaleBolt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.4;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huynh.envato.SaleBolt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		92369E6A260D8562005CF1A7 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SaleBoltExtensionProfile.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3C2ZJ87Z72;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SaleBolt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.4;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huynh.envato.SaleBolt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Profile;
 		};
@@ -662,7 +904,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -711,7 +953,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -749,7 +991,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huynh.envato;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -767,7 +1009,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Runner/RunnerRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -787,7 +1029,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huynh.envato;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -806,6 +1048,16 @@
 				1347470324DA4E020010D31B /* Debug */,
 				1347470424DA4E020010D31B /* Release */,
 				1347470524DA4E020010D31B /* Profile */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92369E6B260D8562005CF1A7 /* Build configuration list for PBXNativeTarget "SaleBoltExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92369E68260D8562005CF1A7 /* Debug */,
+				92369E69260D8562005CF1A7 /* Release */,
+				92369E6A260D8562005CF1A7 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

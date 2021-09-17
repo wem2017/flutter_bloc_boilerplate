@@ -1,7 +1,7 @@
 class ResultModel {
   final bool success;
   final String message;
-  final data;
+  final dynamic data;
 
   ResultModel({
     required this.success,

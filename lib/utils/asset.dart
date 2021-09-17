@@ -9,7 +9,7 @@ class UtilAsset {
   }
 
   ///Singleton factory
-  static final UtilAsset _instance = UtilAsset._internal();
+  static final _instance = UtilAsset._internal();
 
   factory UtilAsset() {
     return _instance;

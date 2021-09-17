@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class PickerScreen extends StatefulWidget {
   final PickerScreenModel picker;
-  PickerScreen({Key? key, required this.picker}) : super(key: key);
+  const PickerScreen({Key? key, required this.picker}) : super(key: key);
 
   @override
   _PickerScreenState createState() {
@@ -23,42 +23,56 @@ class _PickerScreenState extends State<PickerScreen> {
     super.dispose();
   }
 
-  ///On change language
-  Future<void> onChange(PickerItemModel item) async {
+  ///On change
+  void onChange(PickerItemModel item) {
     Navigator.pop(context, item);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          widget.picker.title,
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
         ),
-      ),
-      body: SafeArea(
-        child: ListView.builder(
-          padding: EdgeInsets.only(left: 16, top: 8),
-          itemBuilder: (context, index) {
-            final item = widget.picker.list[index];
-            Widget? checked;
-            if (item.value == widget.picker.selected.value) {
-              checked = Icon(
-                Icons.check,
-                color: Theme.of(context).primaryColor,
-              );
-            }
-            return AppListTitle(
-              title: item.label,
-              trailing: checked,
-              onPressed: () {
-                onChange(item);
-              },
-            );
-          },
-          itemCount: widget.picker.list.length,
-        ),
+        slivers: [
+          SliverAppBar(
+            centerTitle: true,
+            title: Text(
+              widget.picker.title,
+            ),
+            pinned: true,
+          ),
+          SliverSafeArea(
+            top: false,
+            sliver: SliverPadding(
+              padding: const EdgeInsets.only(top: 8),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final item = widget.picker.list[index];
+                    Widget? checked;
+                    if (item.value == widget.picker.selected.value) {
+                      checked = Icon(
+                        Icons.check,
+                        color: Theme.of(context).primaryColor,
+                      );
+                    }
+                    return AppListTitle(
+                      title: item.label,
+                      trailing: checked,
+                      border: item != widget.picker.list.last,
+                      onPressed: () {
+                        onChange(item);
+                      },
+                    );
+                  },
+                  childCount: widget.picker.list.length,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

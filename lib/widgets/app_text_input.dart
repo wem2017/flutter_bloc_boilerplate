@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class AppTextInput extends StatefulWidget {
   const AppTextInput({
-    this.fieldKey,
+    Key? key,
     this.hintText,
     this.labelText,
     this.helperText,
@@ -17,9 +17,8 @@ class AppTextInput extends StatefulWidget {
     this.maxLines,
     this.onChanged,
     this.focusNode,
-  });
+  }) : super(key: key);
 
-  final Key? fieldKey;
   final String? hintText;
   final String? labelText;
   final String? helperText;
@@ -38,7 +37,7 @@ class AppTextInput extends StatefulWidget {
 }
 
 class _AppTextInputState extends State<AppTextInput> {
-  bool obscureText = false;
+  bool? obscureText;
 
   @override
   void initState() {
@@ -68,11 +67,11 @@ class _AppTextInputState extends State<AppTextInput> {
         dragStartBehavior: DragStartBehavior.down,
         onTap: () {
           setState(() {
-            obscureText = !obscureText;
+            obscureText = !obscureText!;
           });
         },
         child: Icon(
-          obscureText ? Icons.visibility : Icons.visibility_off,
+          obscureText! ? Icons.visibility : Icons.visibility_off,
         ),
       );
     }
@@ -82,7 +81,7 @@ class _AppTextInputState extends State<AppTextInput> {
         onTap: () {
           widget.controller!.text = '';
         },
-        child: Icon(Icons.clear),
+        child: const Icon(Icons.clear),
       );
     }
     return null;
@@ -90,12 +89,11 @@ class _AppTextInputState extends State<AppTextInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
       child: TextFormField(
-        key: widget.fieldKey,
         controller: widget.controller,
-        obscureText: obscureText,
+        obscureText: obscureText!,
         maxLength: widget.maxLength,
         maxLines: widget.maxLines,
         keyboardType: widget.keyboardType,
@@ -108,7 +106,7 @@ class _AppTextInputState extends State<AppTextInput> {
           setState(() {});
         },
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText: widget.hintText,
           labelText: widget.labelText,
           helperText: widget.helperText,

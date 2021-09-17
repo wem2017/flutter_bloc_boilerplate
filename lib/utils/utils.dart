@@ -1,9 +1,11 @@
 export 'asset.dart';
 export 'color.dart';
+export 'device.dart';
 export 'language.dart';
 export 'logger.dart';
 export 'other.dart';
 export 'preferences.dart';
 export 'theme.dart';
+export 'timezone.dart';
 export 'translate.dart';
 export 'validate.dart';
